@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
+import FileUpload from './components/FileUpload';
+import Uploading from './components/Uploading';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
@@ -20,6 +22,7 @@ export default class App extends Component {
         <Route path='/counter' component={Counter} />
         <AuthorizeRoute path='/fetch-data' component={FetchData} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
+        <FileUpload />
       </Layout>
     );
   }

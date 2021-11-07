@@ -18,7 +18,7 @@ const Uploading = () => {
             <h2>{countRef.current}</h2>
             <button className='btn btn-primary' onClick={() => textbox2Ref.current.focus()}>Focus textbox 2</button>
         </div>
-    )
-}
+    );
+};
 
 export default Uploading;

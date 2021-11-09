@@ -10,8 +10,8 @@ const signUpTemplate = new mongoose.Schema({
         required: true
     },
     books: [{
-        bookName: { type: String, required: true },
-        page: { type: Number, required: true },
+        bookName:String,
+        page:Number,
     }],
     date: {
         type: Date,

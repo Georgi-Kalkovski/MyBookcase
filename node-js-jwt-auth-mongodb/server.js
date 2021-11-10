@@ -27,7 +27,7 @@ const Role = db.role;
 const dbConfig = require('./app/config/db.config');
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(dbConfig.url,  {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

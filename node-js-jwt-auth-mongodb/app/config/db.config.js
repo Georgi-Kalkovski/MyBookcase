@@ -1,5 +1,3 @@
 module.exports = {
-    HOST: "localhost",
-    PORT: 8081,
-    DB: "mytable"
+  url: 'mongodb+srv://Terter:Terter@bookcase.3tncv.mongodb.net/mytable?retryWrites=true&w=majority'
   };

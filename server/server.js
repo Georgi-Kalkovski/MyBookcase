@@ -22,12 +22,11 @@ app.get("/", (req, res) => {
 });
 
 const db = require("./app/models");
+const dbConfig = require("./app/config/db.config");
 const Role = db.role;
 
-const dbConfig = require('./app/config/db.config');
-
 db.mongoose
-  .connect(dbConfig.url,  {
+.connect(dbConfig.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

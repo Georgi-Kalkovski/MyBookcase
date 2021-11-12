@@ -4,14 +4,14 @@ import DropboxChooser from 'react-dropbox-chooser';
 
 const APP_KEY='e0wxjdivdz0qfr8';
 
-export default function App() {
+export default function Book() {
   const [url,setUrl] = useState('');
   function handleSuccess(files){
     setUrl(files[0].thumbnailLink);
     console.log(url);
   }
   return (
-    <div className='App'>
+    <div className='Book'>
       <h1 style={{textAlign:'center'}}>Upload Or Choose Files to DropBox</h1>
       <br/><br/>
     <div className='container'>

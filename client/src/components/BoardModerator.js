@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import ModeratorService from "../services/user.service";
+import ModeratorService from '../services/user.service';
 
 const BoardModerator = () => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     ModeratorService.getModeratorBoard().then(
@@ -24,8 +24,8 @@ const BoardModerator = () => {
   }, []);
 
   return (
-    <div className="container">
-      <header className="jumbotron">
+    <div className='container'>
+      <header className='jumbotron'>
         <h3>{content}</h3>
       </header>
     </div>

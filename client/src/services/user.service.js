@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = process.env.API_URL;
+const API_URL = "https://thebookcase-api.herokuapp.com/";
 
 const getPublicContent = () => {
   return axios.get(API_URL + "all");

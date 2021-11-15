@@ -1,4 +1,2 @@
-$ cd client
-web: npm start
-$cd server
-api: node server.js
+thebookcase: cd client npm start
+thebookcase-api: cd server node server.js

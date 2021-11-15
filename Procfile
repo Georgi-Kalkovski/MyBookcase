@@ -1,2 +1,2 @@
-thebookcase: cd client npm start
-thebookcase-api: cd server node server.js
+web: node web/index.js
+api: node api/index.js

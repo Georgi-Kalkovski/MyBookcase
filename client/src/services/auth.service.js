@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL + "/api/auth/";
 
 const register = (username, email, password) => {
   return axios.post(API_URL + "signup", {

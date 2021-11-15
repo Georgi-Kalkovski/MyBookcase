@@ -1,2 +1,0 @@
-web: npm start client/src/index.js
-api: node server/server.js

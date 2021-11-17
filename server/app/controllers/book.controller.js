@@ -1,15 +1,23 @@
-exports.allAccess = (req, res) => {
-    res.status(200).send("Public Content.");
+exports.booksAccess = (req, res) => {
+    res.status(200).send("All Books Content.");
   };
   
-  exports.userBoard = (req, res) => {
-    res.status(200).send("User Content.");
+  exports.myBooksAccess = (req, res) => {
+    res.status(200).send("My Books Content.");
   };
   
-  exports.adminBoard = (req, res) => {
-    res.status(200).send("Admin Content.");
+  exports.readBoard = (req, res) => {
+    res.status(200).send("Read Content.");
   };
   
-  exports.moderatorBoard = (req, res) => {
-    res.status(200).send("Moderator Content.");
+  exports.uploadBoard = (req, res) => {
+    res.status(200).send("Upload Content.");
+  };
+
+  exports.editBoard = (req, res) => {
+    res.status(200).send("Edit Content.");
+  };
+
+  exports.deleteBoard = (req, res) => {
+    res.status(200).send("Delete Content.");
   };

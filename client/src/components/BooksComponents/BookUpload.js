@@ -1,56 +1,8 @@
-//import axios from 'axios';
+import axios from 'axios';
 
-//import React, { Component } from 'react';
+import React, { Component } from 'react';
 
-const { google } = require('googleapis');
-const path = require('path');
-const fs = require('fs');
-
-const CLIENT_ID = '1084997358965-56b0s7612k713j870dnl3j2n69p4g6bk.apps.googleusercontent.com';
-const CLIENT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-
-const REFRESH_TOKEN = '1//04tqhFC6khX6SCgYIARAAGAQSNwF-L9IrMRur2TERX-69-PhIXoF58p5e5ljYHeUAqtNfqCi5_fd_f449vO41JUrEOfk6ft3Radg';
-
-const oauth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI
-);
-
-oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-
-const drive = google.drive({
-  version: 'v3',
-  auth: oauth2Client
-});
-
-const filePath = path.join(__dirname, 'logo192.png');
-
-async function uploadBook() {
-  try {
-    const response = await drive.files.create({
-      requestBody: {
-        name: 'logo.png',
-        mimeType: 'image/png'
-      },
-      media: {
-        mimeType: 'image/png',
-        body: fs.createReadStream(filePath)
-      }
-    });
-
-    console.log(response.data);
-
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-export default uploadBook();
-
-/*
-class App extends Component {
+class BookUpload extends Component {
 
   state = {
 
@@ -84,7 +36,8 @@ class App extends Component {
 
     // Request made to the backend api
     // Send formData object
-    axios.post("api/uploadfile", formData);
+    console.log(formData);
+    axios.post("/api/book/upload", formData);
   };
 
   // File content to be displayed after
@@ -124,14 +77,11 @@ class App extends Component {
 
     return (
       <div>
-        <h1>
-          GeeksforGeeks
-        </h1>
         <h3>
           File Upload using React!
         </h3>
         <div>
-          <input type="file" onChange={this.onFileChange} />
+          <input type="file" onChange={this.onFileChange}/>
           <button onClick={this.onFileUpload}>
             Upload!
           </button>
@@ -142,6 +92,4 @@ class App extends Component {
   }
 }
 
-export default App;
-
-*/
+export default BookUpload;

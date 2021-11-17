@@ -12,7 +12,7 @@ import Profile from './components/Profile';
 import BoardUser from './components/BoardUser';
 import BoardModerator from './components/BoardModerator';
 import BoardAdmin from './components/BoardAdmin';
-import UploadBook from './components/BooksComponents/UploadBook';
+import BookUpload from './components/BooksComponents/BookUpload';
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -72,7 +72,7 @@ const App = () => {
 
         {currentUser && (
             <li className='nav-item'>
-              <Link to={'/uploadbook'} className='nav-link'>
+              <Link to={'/book/upload'} className='nav-link'>
                 Upload Book
               </Link>
             </li>
@@ -119,7 +119,7 @@ const App = () => {
           <Route path='/user' element={<BoardUser/>} />
           <Route path='/mod' element={<BoardModerator/>} />
           <Route path='/admin' element={<BoardAdmin/>} />
-          <Route path='/uploadbook' element={<UploadBook/>} />
+          <Route path='/book/upload' element={<BookUpload/>} />
         </Routes>
       </div>
     </div>

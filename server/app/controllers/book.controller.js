@@ -1,3 +1,6 @@
+const {drive} = require('../config/googleAPI.config');
+const { Readable } = require('stream');
+
 exports.booksAccess = (req, res) => {
     res.status(200).send("All Books Content.");
   };
@@ -11,7 +14,26 @@ exports.booksAccess = (req, res) => {
   };
   
   exports.uploadBoard = (req, res) => {
-    res.status(200).send("Upload Content.");
+    const {file} = req.files
+    try {
+      const response = drive.files.create({
+        requestBody: {
+          name: file.name,
+          mimeType: file.mimetype
+        },
+        media: {
+          mimeType: file.mimetype,
+          body: Readable.from(file.data)
+        }
+      });
+  
+      res.status(200).send("Uploaded successfuly");
+  
+    } catch (error) {
+      console.log(error.message);
+
+      res.status(400).send("Upload failed");
+    }
   };
 
   exports.editBoard = (req, res) => {

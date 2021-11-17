@@ -23,19 +23,19 @@ module.exports = function (app) {
         //controller.readBoard
     );
 
-    app.get(
+    app.post(
         "/api/book/upload",
         [authJwt.verifyToken],
         controller.uploadBoard
     );
 
-    app.get(
+    app.put(
         "/api/book/edit",
         //[authJwt.verifyToken],
         //controller.editBoard
     );
 
-    app.get(
+    app.delete(
         "/api/book/delete",
         //[authJwt.verifyToken],
         //controller.deleteBoard

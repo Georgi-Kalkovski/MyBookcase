@@ -20,14 +20,13 @@ export default class BookUpload extends Component {
 
   // On file upload (click the upload button)
   onFileUpload = () => {
-    const currentBook = BookService.bookUpload();
-    console.log(currentBook);
+
     // Create an object of formData
     const formData = new FormData();
 
     // Update the formData object
     formData.append(
-      "myFile",
+      "file",
       this.state.selectedFile,
       this.state.selectedFile.name
     );
@@ -37,8 +36,6 @@ export default class BookUpload extends Component {
 
     // Request made to the backend api
     // Send formData object
-    BookService.bookUpload(formData);
-
     BookService.bookUpload(formData).then(result => console.log(result));
   };
 

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import React, { Component } from 'react';
 
 import BookService from '../../services/book.service';
@@ -39,8 +37,9 @@ export default class BookUpload extends Component {
 
     // Request made to the backend api
     // Send formData object
-    console.log(formData);
-    axios.post("/api/book/upload", formData);
+    BookService.bookUpload(formData);
+
+    BookService.bookUpload(formData).then(result => console.log(result));
   };
 
   // File content to be displayed after

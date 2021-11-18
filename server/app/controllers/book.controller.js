@@ -16,10 +16,19 @@ exports.readBoard = (req, res) => {
 
 exports.uploadBoard = (req, res) => {
   const { file } = req.files
-  console.log(file.mimetype)
-  console.log(file.name)
+  // console.log(file.mimetype)
+  // console.log(file.name)
   try {
-    if (file.mimetype == 'application/epub+zip') {
+
+    drive.files.list({
+      q: `'${folderId}' in parents`
+    }).then(result => {
+      if (result.data.files.find(x=>x.name === file.name)) {
+        throw new Error('file exists');
+      } else if (file.mimetype !== 'application/epub+zip') {
+        throw new Error('file wrong mime');
+      }
+
       var fileMetadata = {
         name: file.name,
         parents: [folderId]
@@ -39,10 +48,13 @@ exports.uploadBoard = (req, res) => {
       });
 
       res.status(200).send("Uploaded successfuly");
-    };
-  } catch (error) {
-    console.log(error.message);
+    }).catch(error => {
+      console.log(error);
+      res.status(400).send(error.message);
+    });
 
+  } catch (error) {
+    console.log(error);  
     res.status(400).send("Upload failed");
   }
 };

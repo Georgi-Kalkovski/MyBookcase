@@ -50,7 +50,7 @@ function getAccessToken(oauth2Client, callback) {
     });
   });
 }
-console.log(oauth2Client);
+//console.log(oauth2Client);
 module.exports = {
   drive: google.drive({
     version: 'v3',

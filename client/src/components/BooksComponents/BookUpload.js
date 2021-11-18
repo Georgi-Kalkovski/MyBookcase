@@ -2,7 +2,9 @@ import axios from 'axios';
 
 import React, { Component } from 'react';
 
-class BookUpload extends Component {
+import BookService from '../../services/book.service';
+
+export default class BookUpload extends Component {
 
   state = {
 
@@ -20,7 +22,8 @@ class BookUpload extends Component {
 
   // On file upload (click the upload button)
   onFileUpload = () => {
-
+    const currentBook = BookService.bookUpload();
+    console.log(currentBook);
     // Create an object of formData
     const formData = new FormData();
 
@@ -91,5 +94,3 @@ class BookUpload extends Component {
     );
   }
 }
-
-export default BookUpload;

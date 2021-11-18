@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -18,6 +18,7 @@ const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -30,7 +31,7 @@ const App = () => {
   }, []);
 
   const logOut = () => {
-    AuthService.logout();
+    AuthService.logout().navigate('/');
   };
 
   return (
@@ -70,7 +71,7 @@ const App = () => {
             </li>
           )}
 
-        {currentUser && (
+          {currentUser && (
             <li className='nav-item'>
               <Link to={'/book/upload'} className='nav-link'>
                 Upload Book
@@ -111,15 +112,15 @@ const App = () => {
 
       <div className='container mt-3'>
         <Routes>
-        <Route exact path='/' element={<Home/>} />
-          <Route exact path='/home' element={<Home/>} />
-          <Route exact path='/login' element={<Login/>} />
-          <Route exact path='/register' element={<Register/>} />
-          <Route exact path='/profile' element={<Profile/>} />
-          <Route path='/user' element={<BoardUser/>} />
-          <Route path='/mod' element={<BoardModerator/>} />
-          <Route path='/admin' element={<BoardAdmin/>} />
-          <Route path='/book/upload' element={<BookUpload/>} />
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/home' element={<Home />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/profile' element={<Profile />} />
+          <Route path='/user' element={<BoardUser />} />
+          <Route path='/mod' element={<BoardModerator />} />
+          <Route path='/admin' element={<BoardAdmin />} />
+          <Route path='/book/upload' element={<BookUpload />} />
         </Routes>
       </div>
     </div>

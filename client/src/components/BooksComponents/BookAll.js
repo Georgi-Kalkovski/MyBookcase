@@ -7,8 +7,8 @@ import BookService from '../../services/book.service';
 const BookAll = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
-        fetch(BookService.bookAll())
-            .then(res => res.json())
+        BookService.bookAll()
+            .then(res => res.data)
             .then(book => setBooks(book));
     }, []);
 

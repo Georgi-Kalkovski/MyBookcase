@@ -10,17 +10,17 @@ module.exports = function (app) {
         next();
     });
 
+    app.get("/api/book/read",
+        controller.readBoard
+    );
+
     app.get("/api/book/all",
-        //controller.booksAccess
+        controller.booksAccess
     );
 
     app.get("/api/book/mybooks",
         //[authJwt.verifyToken],
         //controller.myBooksAccess
-    );
-
-    app.get("/api/book/read",
-        //controller.readBoard
     );
 
     app.post(

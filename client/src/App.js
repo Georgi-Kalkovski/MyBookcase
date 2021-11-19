@@ -13,6 +13,8 @@ import BoardUser from './components/BoardUser';
 import BoardModerator from './components/BoardModerator';
 import BoardAdmin from './components/BoardAdmin';
 import BookUpload from './components/BooksComponents/BookUpload';
+import BookRead from './components/BooksComponents/BookRead';
+import BookAll from './components/BooksComponents/BookAll';
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -38,7 +40,7 @@ const App = () => {
     <div>
       <nav className='navbar navbar-expand navbar-dark bg-dark'>
         <Link to={'/'} className='navbar-brand'>
-          bezKoder
+          MyBookcase
         </Link>
         <div className='navbar-nav mr-auto'>
           <li className='nav-item'>
@@ -75,6 +77,21 @@ const App = () => {
             <li className='nav-item'>
               <Link to={'/book/upload'} className='nav-link'>
                 Upload Book
+              </Link>
+            </li>
+          )}
+
+          {currentUser && (
+            <li className='nav-item'>
+              <Link to={'/book/read'} className='nav-link'>
+                Read Book
+              </Link>
+            </li>
+          )}
+          {currentUser && (
+            <li className='nav-item'>
+              <Link to={'/book/all'} className='nav-link'>
+                All Books
               </Link>
             </li>
           )}
@@ -121,6 +138,8 @@ const App = () => {
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
           <Route path='/book/upload' element={<BookUpload />} />
+          <Route path='/book/read' element={<BookRead />} />
+          <Route path='/book/all' element={<BookAll />} />
         </Routes>
       </div>
     </div>

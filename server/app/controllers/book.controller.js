@@ -3,7 +3,21 @@ const { Readable } = require('stream');
 var folderId = '1xtWpdTyrEstu9ciO4tV5ZHGjajwbf21R';
 
 exports.booksAccess = (req, res) => {
-  res.status(200).send("All Books Content.");
+  //res.status(200).send("All Books Content.");
+  return drive.files.list({
+    q: `'${folderId}' in parents`
+  })
+    .then(function (response) {
+      // Handle the results here (response.result has the parsed body).
+      const array = response.data.files;
+      for (const i of array) {
+        console.log(i['name']);
+        res.send(i);
+      }
+      //console.log(array.forEach(x=> [x]['name'])
+      //res.send(array);
+    },
+      function (err) { console.error("Execute error", err); });
 };
 
 exports.myBooksAccess = (req, res) => {
@@ -11,7 +25,15 @@ exports.myBooksAccess = (req, res) => {
 };
 
 exports.readBoard = (req, res) => {
-  res.status(200).send("Read Content.");
+  //res.status(200).send("Read Content.");
+  return drive.files.list({
+    q: `'${folderId}' in parents`
+  })
+    .then(function (response) {
+      // Handle the results here (response.result has the parsed body).
+      console.log("Response", response);
+    },
+      function (err) { console.error("Execute error", err); });
 };
 
 exports.uploadBoard = (req, res) => {
@@ -23,7 +45,7 @@ exports.uploadBoard = (req, res) => {
     drive.files.list({
       q: `'${folderId}' in parents`
     }).then(result => {
-      if (result.data.files.find(x=>x.name === file.name)) {
+      if (result.data.files.find(x => x.name === file.name)) {
         throw new Error('file exists');
       } else if (file.mimetype !== 'application/epub+zip') {
         throw new Error('file wrong mime');
@@ -54,7 +76,7 @@ exports.uploadBoard = (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);  
+    console.log(error);
     res.status(400).send("Upload failed");
   }
 };

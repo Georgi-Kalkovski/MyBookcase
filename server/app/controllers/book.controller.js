@@ -10,12 +10,8 @@ exports.booksAccess = (req, res) => {
     .then(function (response) {
       // Handle the results here (response.result has the parsed body).
       const array = response.data.files;
-      for (const i of array) {
-        console.log(i['name']);
-        res.send(i);
-      }
-      //console.log(array.forEach(x=> [x]['name'])
-      //res.send(array);
+      console.log(array);
+      res.send(array);
     },
       function (err) { console.error("Execute error", err); });
 };

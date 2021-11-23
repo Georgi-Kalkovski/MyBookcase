@@ -35,8 +35,10 @@ exports.readBoard = (req, res) => {
 };
 
 exports.createBoard = (req, res) => {
-  const { image } = req.files;
-  const { file } = req.files;
+  const { bookCover } = req.files;
+  const { bookFile } = req.files;
+  console.log(bookCover);
+  console.log(bookFile);
   const imageId = '';
   const fileId = '';
   try {
@@ -44,26 +46,26 @@ exports.createBoard = (req, res) => {
     drive.files.list({
       q: `'${folderId}' in parents`
     }).then(result => {
-      if (result.data.files.find(x => x.name === file.name)) {
+      if (result.data.files.find(x => x.name === bookCover.name)) {
         throw new Error('file exists');
-      } else if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpeg') {
+      } else if (bookCover.mimetype !== 'image/png' && bookCover.mimetype !== 'image/jpeg') {
         throw new Error('file wrong mime');
       }
 
       var fileMetadata = {
-        name: image.name,
+        name: bookCover.name,
         parents: [folderId]
       };
       const response = drive.files.create({
         requestBody: {
           resource: fileMetadata,
-          name: image.name,
-          mimeType: image.mimetype,
+          name: bookCover.name,
+          mimeType: bookCover.mimetype,
           parents: [folderId]
         },
         media: {
-          mimeType: image.mimetype,
-          body: Readable.from(image.data),
+          mimeType: bookCover.mimetype,
+          body: Readable.from(bookCover.data),
           parents: [folderId]
         }
       }).then(x => console.log(x.data.id)).then(x => imageId = x.data.id);
@@ -84,26 +86,26 @@ exports.createBoard = (req, res) => {
     drive.files.list({
       q: `'${folderId}' in parents`
     }).then(result => {
-      if (result.data.files.find(x => x.name === file.name)) {
+      if (result.data.files.find(x => x.name === bookFile.name)) {
         throw new Error('file exists');
-      } else if (file.mimetype !== 'application/epub+zip') {
+      } else if (bookFile.mimetype !== 'application/epub+zip') {
         throw new Error('file wrong mime');
       }
 
       var fileMetadata = {
-        name: file.name,
+        name: bookFile.name,
         parents: [folderId]
       };
       const response = drive.files.create({
         requestBody: {
           resource: fileMetadata,
-          name: file.name,
-          mimeType: file.mimetype,
+          name: bookFile.name,
+          mimeType: bookFile.mimetype,
           parents: [folderId]
         },
         media: {
-          mimeType: file.mimetype,
-          body: Readable.from(file.data),
+          mimeType: bookFile.mimetype,
+          body: Readable.from(bookFile.data),
           parents: [folderId]
         }
       }).then(x => console.log(x.data.id)).then(x => fileId = x.data.id);
@@ -131,7 +133,7 @@ exports.createBoard = (req, res) => {
   //book.save();
   //console.log(req.body)
   //console.log(req.files)
-  console.log(book)
+  //console.log(book)
   res.send('asd')
   return;
 }

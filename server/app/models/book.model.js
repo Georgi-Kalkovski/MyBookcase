@@ -8,6 +8,7 @@ const Book = mongoose.model(
     name: String,
     author: String,
     genre: String,
+    year: Number,
     imageUrl:String,
     fileUrl:String,
   })

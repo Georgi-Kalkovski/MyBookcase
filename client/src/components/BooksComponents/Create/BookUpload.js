@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import BookService from '../../services/book.service';
+import BookService from '../../../services/book.service';
 
 export default class BookUpload extends Component {
 

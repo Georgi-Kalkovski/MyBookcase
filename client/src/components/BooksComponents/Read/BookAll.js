@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import BookRead from './BookRead';
 
-import BookService from '../../services/book.service';
+import BookService from '../../../services/book.service';
 
 const BookAll = () => {
     const [books, setBooks] = useState([]);

@@ -1,4 +1,4 @@
-export const Genres = [
+const Genres = [
     "Action and Adventure",
     "Biographies and Autobiographies",
     "Classics",
@@ -21,3 +21,5 @@ export const Genres = [
     "Suspense and Thrillers",
     "Women's Fiction"
 ];
+
+export default Genres;

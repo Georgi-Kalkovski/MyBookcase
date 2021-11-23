@@ -11,6 +11,9 @@ const bookAll = () => {
   return axios.get(API_URL + 'all');
 };
 
+const bookCreate = () => {
+  return axios.get(API_URL + 'create');
+};
 const bookUpload = (formData) => {
   return axios.post(API_URL + 'upload', formData, {
     headers: authHeader(),
@@ -21,5 +24,6 @@ const bookUpload = (formData) => {
 export default {
   bookRead,
   bookAll,
+  bookCreate,
   bookUpload
 };

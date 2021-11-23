@@ -29,6 +29,12 @@ module.exports = function (app) {
         controller.uploadBoard
     );
 
+    app.post(
+        "/api/book/create",
+        [authJwt.verifyToken],
+        controller.createBoard
+    );
+
     app.put(
         "/api/book/edit",
         //[authJwt.verifyToken],

@@ -1,6 +1,8 @@
 const { drive } = require('../config/googleAPI.config');
 const { Readable } = require('stream');
 var folderId = '1xtWpdTyrEstu9ciO4tV5ZHGjajwbf21R';
+const db = require("../models");
+const Book = db.book;
 
 exports.booksAccess = (req, res) => {
   //res.status(200).send("All Books Content.");
@@ -33,7 +35,19 @@ exports.readBoard = (req, res) => {
 };
 
 exports.createBoard = (req, res) => {
-  console.log(res)
+  const book = new Book({
+    userId: req.body.userId,
+    name: req.body.bookName,
+    author: req.body.bookAuthor,
+    year: req.body.bookYear,
+    genre: req.body.bookGenre,
+  });
+  book.save();
+  console.log(req.body)
+  console.log(req.files)
+  console.log(book)
+  res.send('asd')
+  return;
 }
 
 exports.uploadBoard = (req, res) => {

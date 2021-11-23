@@ -1,8 +1,4 @@
 import React, { useState, useRef } from "react";
-import Form from 'react-validation/build/form';
-import Input from 'react-validation/build/input';
-import Select from 'react-validation/build/select';
-import CheckButton from 'react-validation/build/button';
 import BookGenres from "./BookGenres";
 import BookService from "../../../services/book.service";
 
@@ -25,37 +21,43 @@ const CreateBook = (props) => {
         setMessage('');
         setSuccessful(false);
 
-        form.current.validateAll();
+        // form.current.validateAll();
 
-        if (checkBtn.current.context._errors.length === 0) {
-            BookService.bookCreate(name, author, year, genre, bookCover, bookFile).then(
-                (response) => {
-                    setMessage(response.data.message);
-                    setSuccessful(true);
-                },
-                (error) => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+        // if (checkBtn.current.context._errors.length === 0) {
+        // console.log(new FormData(form.current));
+        const userId = JSON.parse(localStorage.getItem('user'))?.id;
+        const formData = new FormData(form.current);
+        formData.append('userId', userId);
 
-                    setMessage(resMessage);
-                    setSuccessful(false);
-                }
-            );
-        }
+        BookService.bookCreate(formData).then(
+            (response) => {
+                setMessage(response.data.message);
+                setSuccessful(true);
+            },
+            (error) => {
+                const resMessage =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+                setMessage(resMessage);
+                setSuccessful(false);
+            }
+        );
+        // }
     };
 
     return (
         <div className='col-md-12'>
             <div className='card card-container'>
-                <Form onSubmit={handleCreate} ref={form}>
+                <form onSubmit={handleCreate} ref={form}>
                     <h1>Create Book</h1>
 
                     <label>Enter Book Name:
-                        <Input
+                        <input
+                            name="bookName"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -64,7 +66,8 @@ const CreateBook = (props) => {
                     </label>
 
                     <label>Enter Book Author:
-                        <Input
+                        <input
+                            name="bookAuthor"
                             type="text"
                             value={author}
                             onChange={(e) => setAuthor(e.target.value)}
@@ -73,7 +76,8 @@ const CreateBook = (props) => {
                     </label>
 
                     <label>Enter Book Year:
-                        <Input
+                        <input
+                            name="bookYear"
                             type="number"
                             value={year}
                             onChange={(e) => setYear(e.target.value)}
@@ -82,23 +86,26 @@ const CreateBook = (props) => {
                     </label>
 
                     <label>Enter Book Genre:
-                        <Select
+                        <select
+                            name="bookGenre"
                             multiple={false}
                             value={genre}
                             onChange={(e) => setGenre(e.target.value)}
                         >
                             {BookGenres.map(el => <option value={el}>{el}</option>)}
-                        </Select>
+                        </select>
                     </label>
 
                     <label>Enter Book Cover Image:
-                        <Input
+                        <input
+                            name="bookCover"
                             ref={bookCover}
                             type="file"
                         />
                     </label>
                     <label>Enter Book File (.epub):
-                        <Input
+                        <input
+                            name="bookFile"
                             ref={bookFile}
                             type="file"
                         />
@@ -106,8 +113,8 @@ const CreateBook = (props) => {
                     <div className='form-group'>
                         <button className='btn btn-primary btn-block'>Submit</button>
                     </div>
-                    <CheckButton style={{ display: 'none' }} ref={checkBtn} />
-                </Form>
+                    {/* <CheckButton style={{ display: 'none' }} ref={checkBtn} /> */}
+                </form>
             </div>
         </div>
     );

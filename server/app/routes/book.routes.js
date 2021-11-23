@@ -24,15 +24,15 @@ module.exports = function (app) {
     );
 
     app.post(
-        "/api/book/upload",
-        [authJwt.verifyToken],
-        controller.uploadBoard
-    );
-
-    app.post(
         "/api/book/create",
         [authJwt.verifyToken],
         controller.createBoard
+    );
+
+    app.post(
+        "/api/book/upload",
+        [authJwt.verifyToken],
+        controller.uploadBoard
     );
 
     app.put(

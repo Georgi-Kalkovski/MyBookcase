@@ -35,16 +35,102 @@ exports.readBoard = (req, res) => {
 };
 
 exports.createBoard = (req, res) => {
+  const { image } = req.files;
+  const { file } = req.files;
+  const imageId = '';
+  const fileId = '';
+  try {
+
+    drive.files.list({
+      q: `'${folderId}' in parents`
+    }).then(result => {
+      if (result.data.files.find(x => x.name === file.name)) {
+        throw new Error('file exists');
+      } else if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpeg') {
+        throw new Error('file wrong mime');
+      }
+
+      var fileMetadata = {
+        name: image.name,
+        parents: [folderId]
+      };
+      const response = drive.files.create({
+        requestBody: {
+          resource: fileMetadata,
+          name: image.name,
+          mimeType: image.mimetype,
+          parents: [folderId]
+        },
+        media: {
+          mimeType: image.mimetype,
+          body: Readable.from(image.data),
+          parents: [folderId]
+        }
+      }).then(x => console.log(x.data.id)).then(x => imageId = x.data.id);
+
+      res.status(200).send("Uploaded successfuly");
+    }).catch(error => {
+      console.log(error);
+      res.status(400).send(error.message);
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("Upload failed");
+  }
+
+  try {
+
+    drive.files.list({
+      q: `'${folderId}' in parents`
+    }).then(result => {
+      if (result.data.files.find(x => x.name === file.name)) {
+        throw new Error('file exists');
+      } else if (file.mimetype !== 'application/epub+zip') {
+        throw new Error('file wrong mime');
+      }
+
+      var fileMetadata = {
+        name: file.name,
+        parents: [folderId]
+      };
+      const response = drive.files.create({
+        requestBody: {
+          resource: fileMetadata,
+          name: file.name,
+          mimeType: file.mimetype,
+          parents: [folderId]
+        },
+        media: {
+          mimeType: file.mimetype,
+          body: Readable.from(file.data),
+          parents: [folderId]
+        }
+      }).then(x => console.log(x.data.id)).then(x => fileId = x.data.id);
+
+      res.status(200).send("Uploaded successfuly");
+    }).catch(error => {
+      console.log(error);
+      res.status(400).send(error.message);
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("Upload failed");
+  }
+
   const book = new Book({
     userId: req.body.userId,
     name: req.body.bookName,
     author: req.body.bookAuthor,
     year: req.body.bookYear,
     genre: req.body.bookGenre,
+    imageUrl: imageId,
+    fileUrl: fileId,
   });
-  book.save();
-  console.log(req.body)
-  console.log(req.files)
+  //book.save();
+  //console.log(req.body)
+  //console.log(req.files)
   console.log(book)
   res.send('asd')
   return;

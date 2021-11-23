@@ -28,7 +28,7 @@ const CreateBook = (props) => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            BookService.bookUpload(name, author, year, genre, bookCover, bookFile).then(
+            BookService.bookCreate(name, author, year, genre, bookCover, bookFile).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
@@ -51,7 +51,7 @@ const CreateBook = (props) => {
     return (
         <div className='col-md-12'>
             <div className='card card-container'>
-                <Form onSubmit={handleCreate}>
+                <Form onSubmit={handleCreate} ref={form}>
                     <h1>Create Book</h1>
 
                     <label>Enter Book Name:
@@ -106,6 +106,7 @@ const CreateBook = (props) => {
                     <div className='form-group'>
                         <button className='btn btn-primary btn-block'>Submit</button>
                     </div>
+                    <CheckButton style={{ display: 'none' }} ref={checkBtn} />
                 </Form>
             </div>
         </div>

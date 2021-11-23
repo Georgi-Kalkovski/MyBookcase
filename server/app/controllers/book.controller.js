@@ -32,6 +32,10 @@ exports.readBoard = (req, res) => {
       function (err) { console.error("Execute error", err); });
 };
 
+exports.createBoard = (req, res) => {
+  console.log(res)
+}
+
 exports.uploadBoard = (req, res) => {
   const { file } = req.files
   // console.log(file.mimetype)

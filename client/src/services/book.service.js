@@ -11,8 +11,10 @@ const bookAll = () => {
   return axios.get(API_URL + 'all');
 };
 
-const bookCreate = () => {
-  return axios.get(API_URL + 'create');
+const bookCreate = (formData) => {
+  return axios.post(API_URL + 'create', formData, {
+    headers: authHeader(),
+  });
 };
 const bookUpload = (formData) => {
   return axios.post(API_URL + 'upload', formData, {

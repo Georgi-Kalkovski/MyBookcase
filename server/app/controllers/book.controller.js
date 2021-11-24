@@ -36,10 +36,10 @@ exports.readBoard = (req, res) => {
 
 exports.createBoard = (req, res) => {
   const { bookCover, bookFile } = req.files;
-  let imageId = '';
-  let fileId = '';
 
   try {
+    const imageId = [];
+    const fileId = [];
 
     // IMAGE
     drive.files.list({
@@ -67,8 +67,10 @@ exports.createBoard = (req, res) => {
           body: Readable.from(bookCover.data),
           parents: [folderId]
         }
-      }).then(x => console.log(x)).then(x => imageId = x.data.id);
+      }).then(x => imageId.push(x.data.id));
       
+      console.log(imageId)
+
     }).catch(error => {
       console.log(error);
       return res.status(400).send(error.message);
@@ -100,7 +102,9 @@ exports.createBoard = (req, res) => {
           body: Readable.from(bookFile.data),
           parents: [folderId]
         }
-      }).then(x => console.log(x)).then(x => fileId = x.data.id);
+      }).then(x => fileId.push(x.data.id));
+
+      console.log(imageId)
 
       return res.status(200).send("Uploaded successfuly");
     }).catch(error => {
@@ -114,32 +118,32 @@ exports.createBoard = (req, res) => {
       author: req.body.bookAuthor,
       year: req.body.bookYear,
       genre: req.body.bookGenre,
-      imageUrl: imageId,
-      fileUrl: fileId,
+      imageUrl: imageId[0],
+      fileUrl: fileId[0],
     });
     book.save();
-
+    return;
   } catch (error) {
     console.log(error);
     return res.status(400).send("Upload failed");
   }
-/*
-  const book = new Book({
-    userId: req.body.userId,
-    name: req.body.bookName,
-    author: req.body.bookAuthor,
-    year: req.body.bookYear,
-    genre: req.body.bookGenre,
-    imageUrl: imageId,
-    fileUrl: fileId,
-  });
-  //book.save();
-  //console.log(req.body)
-  //console.log(req.files)
-  //console.log(book)
-  res.send('asd')
-  return;
-  */
+  /*
+    const book = new Book({
+      userId: req.body.userId,
+      name: req.body.bookName,
+      author: req.body.bookAuthor,
+      year: req.body.bookYear,
+      genre: req.body.bookGenre,
+      imageUrl: imageId,
+      fileUrl: fileId,
+    });
+    //book.save();
+    //console.log(req.body)
+    //console.log(req.files)
+    //console.log(book)
+    res.send('asd')
+    return;
+    */
 }
 
 exports.uploadBoard = (req, res) => {

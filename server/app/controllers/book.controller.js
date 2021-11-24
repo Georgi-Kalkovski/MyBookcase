@@ -36,10 +36,8 @@ exports.readBoard = (req, res) => {
 
 exports.createBoard = (req, res) => {
   const { bookCover, bookFile } = req.files;
-  console.log(bookCover);
-  console.log(bookFile);
-  const imageId = '';
-  const fileId = '';
+  let imageId = '';
+  let fileId = '';
 
   try {
 
@@ -48,9 +46,9 @@ exports.createBoard = (req, res) => {
       q: `'${folderId}' in parents`
     }).then(result => {
       if (result.data.files.find(x => x.name === bookCover.name)) {
-        throw new Error('file exists');
+        return new Error('file exists');
       } else if (bookCover.mimetype !== 'image/png' && bookCover.mimetype !== 'image/jpeg') {
-        throw new Error('file wrong mime');
+        return new Error('file wrong mime');
       }
 
       var fileMetadata = {
@@ -69,12 +67,11 @@ exports.createBoard = (req, res) => {
           body: Readable.from(bookCover.data),
           parents: [folderId]
         }
-      }).then(x => console.log(x.data.id)).then(x => imageId = x.data.id);
-
-      res.status(200).send("Uploaded successfuly");
+      }).then(x => console.log(x)).then(x => imageId = x.data.id);
+      
     }).catch(error => {
       console.log(error);
-      res.status(400).send(error.message);
+      return res.status(400).send(error.message);
     });
 
     // FILE
@@ -82,9 +79,9 @@ exports.createBoard = (req, res) => {
       q: `'${folderId}' in parents`
     }).then(result => {
       if (result.data.files.find(x => x.name === bookFile.name)) {
-        throw new Error('file exists');
+        return new Error('file exists');
       } else if (bookFile.mimetype !== 'application/epub+zip') {
-        throw new Error('file wrong mime');
+        return new Error('file wrong mime');
       }
 
       var fileMetadata = {
@@ -103,18 +100,30 @@ exports.createBoard = (req, res) => {
           body: Readable.from(bookFile.data),
           parents: [folderId]
         }
-      }).then(x => console.log(x.data.id)).then(x => fileId = x.data.id);
+      }).then(x => console.log(x)).then(x => fileId = x.data.id);
 
-      res.status(200).send("Uploaded successfuly");
+      return res.status(200).send("Uploaded successfuly");
     }).catch(error => {
       console.log(error);
-      res.status(400).send(error.message);
+      return res.status(400).send(error.message);
     });
+
+    const book = new Book({
+      userId: req.body.userId,
+      name: req.body.bookName,
+      author: req.body.bookAuthor,
+      year: req.body.bookYear,
+      genre: req.body.bookGenre,
+      imageUrl: imageId,
+      fileUrl: fileId,
+    });
+    book.save();
+
   } catch (error) {
     console.log(error);
-    res.status(400).send("Upload failed");
+    return res.status(400).send("Upload failed");
   }
-
+/*
   const book = new Book({
     userId: req.body.userId,
     name: req.body.bookName,
@@ -130,6 +139,7 @@ exports.createBoard = (req, res) => {
   //console.log(book)
   res.send('asd')
   return;
+  */
 }
 
 exports.uploadBoard = (req, res) => {

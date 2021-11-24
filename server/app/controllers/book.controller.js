@@ -36,114 +36,99 @@ exports.readBoard = (req, res) => {
 
 exports.createBoard = (req, res) => {
   const { bookCover, bookFile } = req.files;
+  const imageId = [];
+  const fileId = [];
 
-  try {
-    const imageId = [];
-    const fileId = [];
+  async function waiting() {
+    try {
 
-    // IMAGE
-    drive.files.list({
-      q: `'${folderId}' in parents`
-    }).then(result => {
-      if (result.data.files.find(x => x.name === bookCover.name)) {
-        return new Error('file exists');
-      } else if (bookCover.mimetype !== 'image/png' && bookCover.mimetype !== 'image/jpeg') {
-        return new Error('file wrong mime');
-      }
+      // IMAGE
+      drive.files.list({
+        q: `'${folderId}' in parents`
+      }).then(result => {
+        if (result.data.files.find(x => x.name === bookCover.name)) {
+          return new Error('file exists');
+        } else if (bookCover.mimetype !== 'image/png' && bookCover.mimetype !== 'image/jpeg') {
+          return new Error('file wrong mime');
+        }
 
-      var fileMetadata = {
-        name: bookCover.name,
-        parents: [folderId]
-      };
-      const response = drive.files.create({
-        requestBody: {
-          resource: fileMetadata,
+        var fileMetadata = {
           name: bookCover.name,
-          mimeType: bookCover.mimetype,
           parents: [folderId]
-        },
-        media: {
-          mimeType: bookCover.mimetype,
-          body: Readable.from(bookCover.data),
-          parents: [folderId]
+        };
+        const response = drive.files.create({
+          requestBody: {
+            resource: fileMetadata,
+            name: bookCover.name,
+            mimeType: bookCover.mimetype,
+            parents: [folderId]
+          },
+          media: {
+            mimeType: bookCover.mimetype,
+            body: Readable.from(bookCover.data),
+            parents: [folderId]
+          }
+        }).then(x => imageId.push(x.data.id));
+
+      }).catch(error => {
+        console.log(error);
+        return res.status(400).send(error.message);
+      });
+
+      // FILE
+      drive.files.list({
+        q: `'${folderId}' in parents`
+      }).then(result => {
+        if (result.data.files.find(x => x.name === bookFile.name)) {
+          return new Error('file exists');
+        } else if (bookFile.mimetype !== 'application/epub+zip') {
+          return new Error('file wrong mime');
         }
-      }).then(x => imageId.push(x.data.id));
-      
-      console.log(imageId)
 
-    }).catch(error => {
-      console.log(error);
-      return res.status(400).send(error.message);
-    });
-
-    // FILE
-    drive.files.list({
-      q: `'${folderId}' in parents`
-    }).then(result => {
-      if (result.data.files.find(x => x.name === bookFile.name)) {
-        return new Error('file exists');
-      } else if (bookFile.mimetype !== 'application/epub+zip') {
-        return new Error('file wrong mime');
-      }
-
-      var fileMetadata = {
-        name: bookFile.name,
-        parents: [folderId]
-      };
-      const response = drive.files.create({
-        requestBody: {
-          resource: fileMetadata,
+        var fileMetadata = {
           name: bookFile.name,
-          mimeType: bookFile.mimetype,
           parents: [folderId]
-        },
-        media: {
-          mimeType: bookFile.mimetype,
-          body: Readable.from(bookFile.data),
-          parents: [folderId]
-        }
-      }).then(x => fileId.push(x.data.id));
+        };
+        const response = drive.files.create({
+          requestBody: {
+            resource: fileMetadata,
+            name: bookFile.name,
+            mimeType: bookFile.mimetype,
+            parents: [folderId]
+          },
+          media: {
+            mimeType: bookFile.mimetype,
+            body: Readable.from(bookFile.data),
+            parents: [folderId]
+          }
+        }).then(x => fileId.push(x.data.id));
+
+      }).catch(error => {
+        console.log(error);
+        return res.status(400).send(error.message);
+      });
+      const sleep = ms => new Promise(res => setTimeout(res, ms))
+      await sleep(10000);
+      const book = new Book({
+        userId: req.body.userId,
+        name: req.body.bookName,
+        author: req.body.bookAuthor,
+        year: req.body.bookYear,
+        genre: req.body.bookGenre,
+        imageUrl: 'https://drive.google.com/file/d/' + imageId[0] + '/view?usp=sharing',
+        fileUrl: 'https://drive.google.com/file/d/' + fileId[0] + '/view?usp=sharing',
+      });
 
       console.log(imageId)
-
-      return res.status(200).send("Uploaded successfuly");
-    }).catch(error => {
+      console.log(fileId)
+      book.save();
+      return;
+    } catch (error) {
       console.log(error);
-      return res.status(400).send(error.message);
-    });
-
-    const book = new Book({
-      userId: req.body.userId,
-      name: req.body.bookName,
-      author: req.body.bookAuthor,
-      year: req.body.bookYear,
-      genre: req.body.bookGenre,
-      imageUrl: imageId[0],
-      fileUrl: fileId[0],
-    });
-    book.save();
-    return;
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send("Upload failed");
+      return res.status(400).send("Upload failed");
+    }
   }
-  /*
-    const book = new Book({
-      userId: req.body.userId,
-      name: req.body.bookName,
-      author: req.body.bookAuthor,
-      year: req.body.bookYear,
-      genre: req.body.bookGenre,
-      imageUrl: imageId,
-      fileUrl: fileId,
-    });
-    //book.save();
-    //console.log(req.body)
-    //console.log(req.files)
-    //console.log(book)
-    res.send('asd')
-    return;
-    */
+  waiting();
 }
 
 exports.uploadBoard = (req, res) => {

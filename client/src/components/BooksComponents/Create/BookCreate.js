@@ -21,10 +21,6 @@ const CreateBook = (props) => {
         setMessage('');
         setSuccessful(false);
 
-        // form.current.validateAll();
-
-        // if (checkBtn.current.context._errors.length === 0) {
-        // console.log(new FormData(form.current));
         const userId = JSON.parse(localStorage.getItem('user'))?.id;
         const formData = new FormData(form.current);
         formData.append('userId', userId);
@@ -46,7 +42,6 @@ const CreateBook = (props) => {
                 setSuccessful(false);
             }
         );
-        // }
     };
 
     return (
@@ -113,7 +108,6 @@ const CreateBook = (props) => {
                     <div className='form-group'>
                         <button className='btn btn-primary btn-block'>Submit</button>
                     </div>
-                    {/* <CheckButton style={{ display: 'none' }} ref={checkBtn} /> */}
                 </form>
             </div>
         </div>

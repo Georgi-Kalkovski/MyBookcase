@@ -35,14 +35,15 @@ exports.readBoard = (req, res) => {
 };
 
 exports.createBoard = (req, res) => {
-  const { bookCover } = req.files;
-  const { bookFile } = req.files;
+  const { bookCover, bookFile } = req.files;
   console.log(bookCover);
   console.log(bookFile);
   const imageId = '';
   const fileId = '';
+
   try {
 
+    // IMAGE
     drive.files.list({
       q: `'${folderId}' in parents`
     }).then(result => {
@@ -76,13 +77,7 @@ exports.createBoard = (req, res) => {
       res.status(400).send(error.message);
     });
 
-  } catch (error) {
-    console.log(error);
-    res.status(400).send("Upload failed");
-  }
-
-  try {
-
+    // FILE
     drive.files.list({
       q: `'${folderId}' in parents`
     }).then(result => {
@@ -115,7 +110,6 @@ exports.createBoard = (req, res) => {
       console.log(error);
       res.status(400).send(error.message);
     });
-
   } catch (error) {
     console.log(error);
     res.status(400).send("Upload failed");

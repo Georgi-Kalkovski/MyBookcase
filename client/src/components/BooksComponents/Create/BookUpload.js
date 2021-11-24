@@ -30,6 +30,7 @@ export default class BookUpload extends Component {
       this.state.selectedFile,
       this.state.selectedFile.name
     );
+    console.log(formData);
 
     // Details of the uploaded file
     console.log(this.state.selectedFile);

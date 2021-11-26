@@ -1,13 +1,19 @@
+import './BookRead.css';
+import {Card} from 'react-bootstrap';
 const BookRead = ({
     book
 }) => {
     return (
-        <div>
-            <h4>{book.name}</h4>
-            <h4>{book.author}</h4>
-            <h4>{book.year}</h4>
-            <h4>{book.genre}</h4>
-        </div>
+        <Card>
+            <img class="card-img-top img-thumbnail" src={book.imageUrl} alt="Card image cap" />
+            <Card.Body>
+                <h5 class="card-title">{book.name}</h5>
+                <p class="card-text">{book.author}</p>
+                <p class="card-text">{book.year}</p>
+                <p class="card-text">{book.genre}</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </Card.Body>
+        </Card>
     );
 };
 

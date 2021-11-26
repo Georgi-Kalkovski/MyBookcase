@@ -10,8 +10,7 @@ exports.allBoard = (req, res) => {
     if (err) {
       return handleError(err);
     }
-    console.log(books);
-    return books;
+    return res.status(200).json(books);
   });
 };
 

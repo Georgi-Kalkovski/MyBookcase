@@ -3,10 +3,10 @@ const BookRead = ({
 }) => {
     return (
         <div>
-            <h4>{book.kind}</h4>
-            <h4>{book.id}</h4>
             <h4>{book.name}</h4>
-            <h4>{book.mimeType}</h4>
+            <h4>{book.author}</h4>
+            <h4>{book.year}</h4>
+            <h4>{book.genre}</h4>
         </div>
     );
 };

@@ -11,7 +11,7 @@ const SCOPES = ['https://www.googleapis.com/auth/drive'];
 const token = fs.readFileSync(path.resolve(__dirname, 'token.json'), 'utf8');
 
 const credentials = fs.readFileSync(path.resolve(__dirname, 'credentials.json'), 'utf8');
-const {installed: { client_secret, client_id, redirect_uris }} = JSON.parse(credentials);
+const {web: { client_secret, client_id, redirect_uris }} = JSON.parse(credentials);
 const oauth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 if (token) {
   oauth2Client.setCredentials(JSON.parse(token));

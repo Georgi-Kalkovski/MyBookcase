@@ -15,7 +15,7 @@ module.exports = function (app) {
     );
 
     app.get("/api/book/all",
-        controller.booksAccess
+        controller.allBoard
     );
 
     app.get("/api/book/mybooks",
@@ -27,12 +27,6 @@ module.exports = function (app) {
         "/api/book/create",
         [authJwt.verifyToken],
         controller.createBoard
-    );
-
-    app.post(
-        "/api/book/upload",
-        [authJwt.verifyToken],
-        controller.uploadBoard
     );
 
     app.put(

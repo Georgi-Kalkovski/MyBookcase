@@ -4,18 +4,15 @@ var folderId = '1xtWpdTyrEstu9ciO4tV5ZHGjajwbf21R';
 const db = require("../models");
 const Book = db.book;
 
-exports.booksAccess = (req, res) => {
+exports.allBoard = (req, res) => {
   //res.status(200).send("All Books Content.");
-  return drive.files.list({
-    q: `'${folderId}' in parents`
-  })
-    .then(function (response) {
-      // Handle the results here (response.result has the parsed body).
-      const array = response.data.files;
-      console.log(array);
-      res.send(array);
-    },
-      function (err) { console.error("Execute error", err); });
+  Book.find({}).exec(function (err, books) {
+    if (err) {
+      return handleError(err);
+    }
+    console.log(books);
+    return books;
+  });
 };
 
 exports.myBooksAccess = (req, res) => {
@@ -115,10 +112,9 @@ exports.createBoard = (req, res) => {
         author: req.body.bookAuthor,
         year: req.body.bookYear,
         genre: req.body.bookGenre,
-        imageUrl: 'https://drive.google.com/file/d/' + imageId[0] + '/view?usp=sharing',
-        fileUrl: 'https://drive.google.com/file/d/' + fileId[0] + '/view?usp=sharing',
+        imageUrl: 'https://drive.google.com/uc?export=view&id=' + imageId[0],
+        fileUrl: 'https://drive.google.com/uc?export=view&id=' + fileId[0],
       });
-
       console.log(imageId)
       console.log(fileId)
       book.save();
@@ -130,51 +126,6 @@ exports.createBoard = (req, res) => {
   }
   waiting();
 }
-
-exports.uploadBoard = (req, res) => {
-  const { file } = req.files
-  // console.log(file.mimetype)
-  // console.log(file.name)
-  try {
-
-    drive.files.list({
-      q: `'${folderId}' in parents`
-    }).then(result => {
-      if (result.data.files.find(x => x.name === file.name)) {
-        throw new Error('file exists');
-      } else if (file.mimetype !== 'application/epub+zip') {
-        throw new Error('file wrong mime');
-      }
-
-      var fileMetadata = {
-        name: file.name,
-        parents: [folderId]
-      };
-      const response = drive.files.create({
-        requestBody: {
-          resource: fileMetadata,
-          name: file.name,
-          mimeType: file.mimetype,
-          parents: [folderId]
-        },
-        media: {
-          mimeType: file.mimetype,
-          body: Readable.from(file.data),
-          parents: [folderId]
-        }
-      });
-
-      res.status(200).send("Uploaded successfuly");
-    }).catch(error => {
-      console.log(error);
-      res.status(400).send(error.message);
-    });
-
-  } catch (error) {
-    console.log(error);
-    res.status(400).send("Upload failed");
-  }
-};
 
 exports.editBoard = (req, res) => {
   res.status(200).send("Edit Content.");

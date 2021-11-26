@@ -8,6 +8,7 @@ const BookAll = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         BookService.bookAll()
+            .then(x => console.log(x))
             .then(res => res.data)
             .then(book => setBooks(book));
     }, []);

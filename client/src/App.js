@@ -9,12 +9,12 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
+
 import BoardUser from './components/Boards/BoardUser';
 import BoardModerator from './components/Boards/BoardModerator';
 import BoardAdmin from './components/Boards/BoardAdmin';
+
 import BookCreate from './components/BooksComponents/Create/BookCreate';
-import BookUpload from './components/BooksComponents/Create/BookUpload';
-import BookRead from './components/BooksComponents/Read/BookRead';
 import BookAll from './components/BooksComponents/Read/BookAll';
 
 const App = () => {
@@ -82,28 +82,11 @@ const App = () => {
             </li>
           )}
 
-          {currentUser && (
-            <li className='nav-item'>
-              <Link to={'/book/upload'} className='nav-link'>
-                Upload Book
-              </Link>
-            </li>
-          )}
-
-          {currentUser && (
-            <li className='nav-item'>
-              <Link to={'/book/read'} className='nav-link'>
-                Read Book
-              </Link>
-            </li>
-          )}
-          {currentUser && (
-            <li className='nav-item'>
-              <Link to={'/book/all'} className='nav-link'>
-                All Books
-              </Link>
-            </li>
-          )}
+          <li className='nav-item'>
+            <Link to={'/book/all'} className='nav-link'>
+              All Books
+            </Link>
+          </li>
         </div>
 
         {currentUser ? (
@@ -147,8 +130,6 @@ const App = () => {
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
           <Route path='/book/create' element={<BookCreate />} />
-          <Route path='/book/upload' element={<BookUpload />} />
-          <Route path='/book/read' element={<BookRead />} />
           <Route path='/book/all' element={<BookAll />} />
         </Routes>
       </div>

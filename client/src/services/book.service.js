@@ -16,16 +16,10 @@ const bookCreate = (formData) => {
     headers: authHeader(),
   });
 };
-const bookUpload = (formData) => {
-  return axios.post(API_URL + 'upload', formData, {
-    headers: authHeader(),
-  });
-};
 
 
 export default {
   bookRead,
   bookAll,
   bookCreate,
-  bookUpload
 };

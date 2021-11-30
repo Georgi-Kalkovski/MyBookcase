@@ -112,7 +112,7 @@ exports.createBoard = (req, res) => {
         year: req.body.bookYear,
         genre: req.body.bookGenre,
         imageUrl: 'https://drive.google.com/uc?export=view&id=' + imageId[0],
-        fileUrl: 'https://drive.google.com/uc?export=view&id=' + fileId[0],
+        fileUrl: `https://epubreader.1bestlink.net/?state=%7B%22ids%22:%5B%22` + fileId[0] + `"%5D,"action":"open","userId":"118121111252291907177","resourceKeys":%7B%7D%7D`,
       });
       console.log(imageId)
       console.log(fileId)

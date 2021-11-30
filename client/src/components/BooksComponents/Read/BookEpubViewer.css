@@ -1,0 +1,8 @@
+.book {
+    width: 1700px;
+    height: 1000px;
+}
+
+#download, #btn_open {
+    display:none;
+}

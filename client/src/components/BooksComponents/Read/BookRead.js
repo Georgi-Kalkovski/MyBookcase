@@ -9,7 +9,7 @@ const BookRead = ({
     const navigate = useNavigate();
 
     return (
-        <Card onClick={() => navigate('/book/read')}>
+        <Card onClick={() => navigate('/book/read?fileUrl='+encodeURIComponent(book.fileUrl), {state: {fileUrl: book.fileUrl}})}>
             <Card.Img src={book.imageUrl} alt="Card image cap" />
             <Card.Body>
                 <Card.Title className="card-title">{book.name}</Card.Title>

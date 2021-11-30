@@ -1,11 +1,12 @@
 import './BookEpubViewer.css';
+import { useLocation } from "react-router-dom";
 
-const BookEpubViewer = ({
-    fileUrl
-}) => {
+const BookEpubViewer = () => {
+    console.log(useLocation());
+    const { fileUrl } = useLocation().state;
     console.log(fileUrl);
     return (
-        <iframe class='book' src={fileUrl}></iframe>
+        <iframe className='book' src={fileUrl}></iframe>
     );
 };
 

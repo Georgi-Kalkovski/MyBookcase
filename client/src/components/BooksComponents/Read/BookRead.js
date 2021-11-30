@@ -1,13 +1,15 @@
 import { Card } from 'react-bootstrap';
 import './BookRead.css';
+import { useNavigate } from "react-router-dom";
 import BookEpubViewer from './BookEpubViewer';
 
 const BookRead = ({
     book
 }) => {
+    const navigate = useNavigate();
 
     return (
-        <Card onClick={() => BookEpubViewer(book.fileUrl)}>
+        <Card onClick={() => navigate('/book/read')}>
             <Card.Img src={book.imageUrl} alt="Card image cap" />
             <Card.Body>
                 <Card.Title className="card-title">{book.name}</Card.Title>

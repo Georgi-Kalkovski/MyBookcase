@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import uuid from 'node-uuid';
+import { Row, Col } from 'react-bootstrap';
 
 import BookRead from './BookRead';
-import { Row, Col } from 'react-bootstrap';
 import BookService from '../../../services/book.service';
 
 const BookAll = () => {
@@ -16,7 +17,7 @@ const BookAll = () => {
         <div className='container'>
             <h1>All books</h1>
                     <Row>
-                        {books.map(x => <BookRead book={x} />)}
+                        {books.map(x => <BookRead key={uuid()} book={x} />)}
                     </Row>
         </div>
     );

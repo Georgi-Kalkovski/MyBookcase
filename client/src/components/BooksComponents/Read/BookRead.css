@@ -13,4 +13,5 @@
 .card {
     max-width:15%;
     margin: 10px 10px;
+    cursor: pointer;
 }

@@ -1,16 +1,28 @@
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import { Card } from 'react-bootstrap';
 import './BookRead.css';
-import { useNavigate } from "react-router-dom";
-import BookEpubViewer from './BookEpubViewer';
+import loader from '../../../loader.svg';
 
 const BookRead = ({
     book
 }) => {
     const navigate = useNavigate();
-
+    const [loaded, setLoaded] = useState(false);
     return (
-        <Card onClick={() => navigate('/book/read?fileUrl='+encodeURIComponent(book.fileUrl), {state: {fileUrl: book.fileUrl}})}>
-            <Card.Img src={book.imageUrl} alt="Card image cap" />
+
+        <Card onClick={() => navigate('/book/read?fileUrl=' + encodeURIComponent(book.fileUrl), { state: { fileUrl: book.fileUrl } })}>
+            <div>
+                {
+                    loaded ? null : (<img class="booksLoader" src={loader} />)
+                }
+                <Card.Img src={book.imageUrl}
+                    alt="Card image cap"
+                    style={loaded ? {} : { display: 'none' }}
+                    onLoad={() => setLoaded(true)}
+                />
+            </div>
             <Card.Body>
                 <Card.Title className="card-title">{book.name}</Card.Title>
                 <Card.Text className="card-text">{book.author}</Card.Text>

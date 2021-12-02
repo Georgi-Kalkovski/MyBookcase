@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+  background-image: url('./old-page-background.jpg');
+}
+
 label {
   display: block;
   margin-top: 10px;

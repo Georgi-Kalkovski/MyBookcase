@@ -16,7 +16,7 @@ import BoardAdmin from './components/Boards/BoardAdmin';
 
 import BookCreate from './components/BooksComponents/Create/BookCreate';
 import BookAll from './components/BooksComponents/Read/BookAll';
-import BookEpubViewer from './components/BooksComponents/Read/BookEpubViewer';
+import BookPdfViewer from './components/BooksComponents/Read/BookPdfViewer';
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -132,7 +132,7 @@ const App = () => {
           <Route path='/admin' element={<BoardAdmin />} />
           <Route path='/book/create' element={<BookCreate />} />
           <Route path='/book/all' element={<BookAll />} />
-          <Route path='/book/read' element={<BookEpubViewer />} />
+          <Route path='/book/read' element={<BookPdfViewer />} />
         </Routes>
       </div>
     </div>

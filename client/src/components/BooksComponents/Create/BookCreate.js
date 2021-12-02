@@ -98,7 +98,7 @@ const CreateBook = (props) => {
                             type="file"
                         />
                     </label>
-                    <label>Enter Book File (.epub):
+                    <label>Enter Book File (.pdf):
                         <input
                             name="bookFile"
                             ref={bookFile}

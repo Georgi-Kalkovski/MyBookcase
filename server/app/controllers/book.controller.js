@@ -77,7 +77,7 @@ exports.createBoard = (req, res) => {
       }).then(result => {
         if (result.data.files.find(x => x.name === bookFile.name)) {
           return new Error('file exists');
-        } else if (bookFile.mimetype !== 'application/epub+zip') {
+        } else if (bookFile.mimetype !== 'application/pdf') {
           return new Error('file wrong mime');
         }
 
@@ -112,7 +112,7 @@ exports.createBoard = (req, res) => {
         year: req.body.bookYear,
         genre: req.body.bookGenre,
         imageUrl: 'https://drive.google.com/uc?export=view&id=' + imageId[0],
-        fileUrl: `https://epubreader.1bestlink.net/?state=%7B%22ids%22:%5B%22` + fileId[0] + `"%5D,"action":"open","userId":"118121111252291907177","resourceKeys":%7B%7D%7D`,
+        fileUrl: `https://drive.google.com/uc?export=view&id=` + fileId[0],
       });
       console.log(imageId)
       console.log(fileId)

@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    position: absolute;
+    min-width: 100%;
+}
+
+.bookIframe {
+    position: fixed;
+    top: 90px;
+    bottom: 0px;
+    right: 0px;
+    width: 91%;
+    left: 4.5%;
+    padding: 0;
+    overflow: hidden;
+    z-index: -1;
+    height: 85%;
+    background-color:#525659;
+    box-shadow: -1px 1px 20px 20px rgb(0 0 0 / 40%), 12px 12px 20px 0 rgb(0 0 0 / 50%);
+}
+
+.pdfLoader {
+    position: fixed;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+
+.goBackBox {
+    position:fixed;
+    left:-2%;
+    top: -2%;
+    width: 110%;
+    height: 110%;
+}

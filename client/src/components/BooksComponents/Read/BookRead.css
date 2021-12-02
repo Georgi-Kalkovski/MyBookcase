@@ -15,3 +15,8 @@
     margin: 10px 10px;
     cursor: pointer;
 }
+
+.booksLoader {
+    margin: 10px 10px;
+    align-items: center;
+}

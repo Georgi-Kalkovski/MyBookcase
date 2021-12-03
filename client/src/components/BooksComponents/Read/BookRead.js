@@ -15,7 +15,7 @@ const BookRead = ({
         <Card onClick={() => navigate('/book/read?fileUrl=' + encodeURIComponent(book.fileUrl), { state: { fileUrl: book.fileUrl } })}>
             <div>
                 {
-                    loaded ? null : (<img class="booksLoader" src={loader} />)
+                    loaded ? null : (<img className="booksLoader" src={loader} />)
                 }
                 <Card.Img src={book.imageUrl}
                     alt="Card image cap"

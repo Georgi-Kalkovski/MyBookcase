@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Footer from './components/Footer';
 
 import BoardUser from './components/Boards/BoardUser';
 import BoardModerator from './components/Boards/BoardModerator';
@@ -40,7 +41,7 @@ const App = () => {
 
   return (
     <div>
-      <nav className='navbar navbar-expand navbar-dark bg-dark'>
+      <nav className='navbar navbar-expand navbar-dark bg-dark ml-auto'>
         <Link to={'/'} className='navbar-brand'>
           MyBookcase
         </Link>
@@ -75,14 +76,6 @@ const App = () => {
             </li>
           )}
 
-          {currentUser && (
-            <li className='nav-item'>
-              <Link to={'/book/create'} className='nav-link'>
-                Create Book
-              </Link>
-            </li>
-          )}
-
           <li className='nav-item'>
             <Link to={'/book/all'} className='nav-link'>
               All Books
@@ -92,6 +85,14 @@ const App = () => {
 
         {currentUser ? (
           <div className='navbar-nav ml-auto'>
+
+          {currentUser && (
+            <li className='nav-item'>
+              <Link to={'/book/create'} className='nav-link'>
+                Create Book
+              </Link>
+            </li>
+          )}
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
                 {currentUser.username}
@@ -135,6 +136,8 @@ const App = () => {
           <Route path='/book/read' element={<BookPdfViewer />} />
         </Routes>
       </div>
+
+      <Footer />
     </div>
   );
 };

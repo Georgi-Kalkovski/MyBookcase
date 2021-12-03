@@ -15,7 +15,6 @@ body {
     overflow: hidden;
     z-index: -1;
     height: 85%;
-    background-color:#525659;
     box-shadow: -1px 1px 20px 20px rgb(0 0 0 / 40%), 12px 12px 20px 0 rgb(0 0 0 / 50%);
 }
 
@@ -31,5 +30,6 @@ body {
     left:-2%;
     top: -2%;
     width: 110%;
-    height: 110%;
+    height: 110%;background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
 }

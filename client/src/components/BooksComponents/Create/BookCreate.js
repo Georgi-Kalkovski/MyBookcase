@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import BookGenres from "./BookGenres";
 import BookService from "../../../services/book.service";
+import './BookCreate.css';
 
 const CreateBook = (props) => {
     const form = useRef();
@@ -45,7 +46,7 @@ const CreateBook = (props) => {
     };
 
     return (
-        <div className='col-md-12'>
+        <div className='col-md-12 centered'>
             <div className='card card-container'>
                 <form onSubmit={handleCreate} ref={form}>
                     <h1>Create Book</h1>
@@ -106,7 +107,7 @@ const CreateBook = (props) => {
                         />
                     </label>
                     <div className='form-group'>
-                        <button className='btn btn-primary btn-block'>Submit</button>
+                        <button className='btn btn-block'>Submit</button>
                     </div>
                 </form>
             </div>

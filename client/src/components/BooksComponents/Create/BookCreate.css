@@ -1,0 +1,17 @@
+.btn {
+    margin-top: 25px;
+  background-color:#ad9b80;
+}
+
+.btn:hover {
+  background-color:#E0C9A6;
+}
+
+.card.card-container{
+    cursor:default;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}

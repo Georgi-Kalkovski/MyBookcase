@@ -68,7 +68,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className='col-md-12'>
+    <div className='col-md-12 centered'>
       <div className='card card-container'>
         <img
           src='//ssl.gstatic.com/accounts/ui/avatar_2x.png'
@@ -102,7 +102,7 @@ const Login = (props) => {
           </div>
 
           <div className='form-group'>
-            <button className='btn btn-primary btn-block' disabled={loading}>
+            <button className='btn btn-block' disabled={loading}>
               {loading && (
                 <span className='spinner-border spinner-border-sm'></span>
               )}

@@ -6,23 +6,26 @@ import loader from '../../../loader.svg';
 const BookPdfViewer = () => {
     const [loaded, setLoaded] = useState(false);
     const navigate = useNavigate();
-    
+
     const { fileUrl } = useLocation().state;
 
     return (
-        <div class="goBackBox" onClick={() => navigate(-1)}>
+        <div onClick={() => navigate(-1)}>
             {
                 <>
                     {
                         loaded ? null : (<img class="pdfLoader" src={loader} />)
                     }
+               <div className="goBackBox"
+                   style={loaded ? {} : { display: 'none' }}>
                     <iframe
                         className='bookIframe'
                         src={fileUrl}
-                        style={loaded ? {} : { display: 'none' }}
+
                         onLoad={() => setLoaded(true)}
                     >
                     </iframe>
+                </div>
                 </>
             }
         </div>

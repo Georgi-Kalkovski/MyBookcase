@@ -4,6 +4,10 @@ body {
   background-image: url('./old-page-background.jpg');
 }
 
+h1 h2 h3 h4 h5 h6 {
+  color:#212529;
+}
+
 label {
   display: block;
   margin-top: 10px;
@@ -15,7 +19,8 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #212529;
+  color:#ad9b80;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -35,4 +40,62 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.centered {
+  justify-content: center;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+   color:#ad9b80;
+}
+
+.navbar-dark:hover .navbar-nav:hover .nav-link:hover {
+  color: #E0C9A6;
+	cursor: pointer;
+}
+
+nav div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="text"] {
+  cursor:pointer;
+  background-color:#E0C9A6;
+}
+
+input[type="number"] {
+  cursor:pointer;
+  background-color:#E0C9A6;
+}
+
+input[type="file"] {
+  cursor:pointer;
+}
+
+select {
+  cursor:pointer;
+  background-color:#E0C9A6;
+}
+
+.btn {
+  margin: 0;
+  position: relative;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  padding-top:5px;
+}
+
+#root div:nth-child(1) nav{
+  display: flex;
+  justify-content: space-between;
+  padding:0 10%;
+  font-size: larger;
+}
+
+.navbar-brand {
+  font-size: xx-large;
 }

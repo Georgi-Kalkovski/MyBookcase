@@ -1,0 +1,61 @@
+footer {
+	position: fixed;
+	bottom: 0;
+	background-color: #212529;
+    width: 100%;
+    line-height: 3;
+}
+
+#footerNav .container {
+	display: flex;
+	flex-direction: row;
+}
+
+#footerNav {
+	display: inline-block;
+}
+
+#footer nav ul {
+	display: contents;
+}
+
+#copyright {
+	position: absolute;
+	width: 44px;
+	color: #E0C9A6;
+	border-radius: 50%;
+	bottom: 10px;
+	left: 40px;
+	z-index: 11;
+	white-space: nowrap;
+}
+
+#contactMeText {
+    list-style-type: none;
+    position: absolute;
+	text-align: center;
+}
+
+.contactMe img {
+    filter: invert(58%) sepia(7%) saturate(1026%) hue-rotate(355deg) brightness(86%) contrast(85%);
+	width: 30px
+}
+
+.contactMe img:hover {
+	filter: invert(95%) sepia(23%) saturate(787%) hue-rotate(311deg) brightness(93%) contrast(87%);
+}
+
+a {
+	color: #ad9b80;
+	text-decoration: none;
+}
+
+a:hover {
+    color: #E0C9A6;
+	cursor: pointer;
+}
+
+.arrowUp {
+    position: absolute;
+    z-index: 9999;
+}

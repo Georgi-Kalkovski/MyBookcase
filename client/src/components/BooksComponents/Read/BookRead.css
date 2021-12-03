@@ -5,6 +5,7 @@
 
 .img-thumbnail {
     max-width:100px;
+    width: 20%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -14,6 +15,15 @@
     max-width:15%;
     margin: 10px 10px;
     cursor: pointer;
+    border-radius: 5px;
+    padding: 1% 0%;
+    text-align: center;
+}
+
+.card img {
+    max-height: 200px;
+    width: 50%;
+    margin:0 23%;
 }
 
 .booksLoader {

@@ -8,24 +8,23 @@ const BookPdfViewer = () => {
     const navigate = useNavigate();
 
     const { fileUrl } = useLocation().state;
-
+    console.log(fileUrl);
     return (
         <div onClick={() => navigate(-1)}>
             {
                 <>
                     {
-                        loaded ? null : (<img class="pdfLoader" src={loader} />)
+                        loaded ? null : (<img className="pdfLoader" src={loader} />)
                     }
-               <div className="goBackBox"
-                   style={loaded ? {} : { display: 'none' }}>
-                    <iframe
-                        className='bookIframe'
-                        src={fileUrl}
-
-                        onLoad={() => setLoaded(true)}
-                    >
-                    </iframe>
-                </div>
+                    <div className="goBackBox"
+                        style={loaded ? {} : { display: 'none' }}>
+                        <iframe
+                            className='bookIframe'
+                            src={fileUrl}
+                            onLoad={() => setLoaded(true)}
+                        >
+                        </iframe>
+                    </div>
                 </>
             }
         </div>

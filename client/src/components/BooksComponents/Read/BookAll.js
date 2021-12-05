@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import uuid from 'node-uuid';
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 import BookRead from './BookRead';
 import BookService from '../../../services/book.service';

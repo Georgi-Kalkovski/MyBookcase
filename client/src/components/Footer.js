@@ -7,7 +7,7 @@ import facebook from './img/facebook.svg';
 import discord from './img/discord.svg';
 
 const Footer = () => (
-    <div class='footer'>
+    <div className='footer'>
         <footer id="footer" className="footer text-center">
 
             <nav id="footerNav">
@@ -27,7 +27,7 @@ const Footer = () => (
                 &copy; MyBookcase - {new Date().getFullYear()}
             </div>
 
-            <a href="#" class="arrowUp"><h3>⮝</h3></a>
+            <a href="#" className="arrowUp"><h3>⮝</h3></a>
         </footer>
     </div>
 );

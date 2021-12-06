@@ -14,7 +14,7 @@ body {
     padding: 0;
     overflow: hidden;
     z-index: -1;
-    height: 85%;
+    height: 80%;
     box-shadow: -1px 1px 20px 20px rgb(0 0 0 / 40%), 12px 12px 20px 0 rgb(0 0 0 / 50%);
 }
 

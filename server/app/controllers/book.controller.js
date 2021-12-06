@@ -19,7 +19,7 @@ exports.myBooksAccess = (req, res) => {
 };
 
 exports.readBoard = (req, res) => {
-  //res.status(200).send("Read Content.");
+  res.status(200).send("Read Content.");
   return drive.files.list({
     q: `'${folderId}' in parents`
   })
@@ -112,7 +112,7 @@ exports.createBoard = (req, res) => {
         year: req.body.bookYear,
         genre: req.body.bookGenre,
         imageUrl: 'https://drive.google.com/uc?export=view&id=' + imageId[0],
-        fileUrl: `https://drive.google.com/uc?export=view&id=` + fileId[0],
+        fileUrl: `https://drive.google.com/file/d/` + fileId[0] + '/preview',
       });
       console.log(imageId)
       console.log(fileId)

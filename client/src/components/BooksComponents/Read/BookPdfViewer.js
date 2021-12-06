@@ -21,6 +21,7 @@ const BookPdfViewer = () => {
                         <iframe
                             className='bookIframe'
                             src={fileUrl}
+
                             onLoad={() => setLoaded(true)}
                         >
                         </iframe>

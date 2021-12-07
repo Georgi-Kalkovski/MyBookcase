@@ -1,4 +1,5 @@
 const Genres = [
+    'Unknown',
     'Action and Adventure',
     'Biographies and Autobiographies',
     'Classics',

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -19,12 +20,20 @@ import BookCreate from './components/BooksComponents/Create/BookCreate';
 import BookAll from './components/BooksComponents/Read/BookAll';
 import BookPdfViewer from './components/BooksComponents/Read/BookPdfViewer';
 
+import BookGenres from "./components/BooksComponents/Create/BookGenres";
+
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
   let navigate = useNavigate();
-
+  let query = useQuery();
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
@@ -81,18 +90,26 @@ const App = () => {
               All Books
             </Link>
           </li>
+
+          <NavDropdown
+            id="nav-dropdown-dark-example"
+            title="Genres"
+            menuVariant="dark"
+          >
+            {BookGenres.map(el => <NavDropdown.Item href={`/book/all?genreUrl=${el}`}>{el}</NavDropdown.Item>)}
+          </NavDropdown>
         </div>
 
         {currentUser ? (
           <div className='navbar-nav ml-auto'>
 
-          {currentUser && (
-            <li className='nav-item'>
-              <Link to={'/book/create'} className='nav-link'>
-                Create Book
-              </Link>
-            </li>
-          )}
+            {currentUser && (
+              <li className='nav-item'>
+                <Link to={'/book/create'} className='nav-link'>
+                  Create Book
+                </Link>
+              </li>
+            )}
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
                 {currentUser.username}
@@ -133,6 +150,7 @@ const App = () => {
           <Route path='/admin' element={<BoardAdmin />} />
           <Route path='/book/create' element={<BookCreate />} />
           <Route path='/book/all' element={<BookAll />} />
+          <Route path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
           <Route path='/book/read' element={<BookPdfViewer />} />
         </Routes>
       </div>

@@ -28,7 +28,7 @@ const BookRead = ({
                 <Card.Text className="card-text">{book.author}</Card.Text>
                 <Card.Text className="card-text">{book.year}</Card.Text>
                 <Card.Text className="card-text">{book.genre}</Card.Text>
-                <Card.Text className="card-text"><small className="text-muted">Last updated 3 mins ago</small></Card.Text>
+                {/*<Card.Text className="card-text"><small className="text-muted">Last updated 3 mins ago</small></Card.Text>*/}
             </Card.Body>
         </Card>
     );

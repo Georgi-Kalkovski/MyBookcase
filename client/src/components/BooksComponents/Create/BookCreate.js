@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Select from "react-validation/build/select";
+import Button from "react-validation/build/button";
 import CheckButton from "react-validation/build/button";
 import { useNavigate, useHistory } from "react-router-dom";
 import BookGenres from "./BookGenres";
@@ -122,7 +123,7 @@ const CreateBook = (props) => {
                     {!successful && (
                         <div>
                             <div className="form-group">
-                                <label>Enter Book Name:
+                                <label>Enter Book Name: <span className="star">*</span>
                                     <Input
                                         name="bookName"
                                         type="text"
@@ -135,7 +136,7 @@ const CreateBook = (props) => {
                             </div>
 
                             <div className="form-group">
-                                <label>Enter Book Author:
+                                <label>Enter Book Author: <span className="star">*</span>
                                     <Input
                                         name="bookAuthor"
                                         type="text"
@@ -148,7 +149,7 @@ const CreateBook = (props) => {
                             </div>
 
                             <div className="form-group">
-                                <label>Enter Book Year:
+                                <label>Enter Book Year: <span className="star">*</span>
                                     <Input
                                         name="bookYear"
                                         type="number"
@@ -161,7 +162,7 @@ const CreateBook = (props) => {
                             </div>
 
                             <div className="form-group">
-                                <label>Enter Book Genre:
+                                <label>Enter Book Genre: <span className="star">*</span>
                                     <Select
                                         name="bookGenre"
                                         multiple={false}
@@ -174,7 +175,7 @@ const CreateBook = (props) => {
                             </div>
 
                             <div className="form-group">
-                                <label>Enter Book Cover Image:
+                                <label>Enter Book Cover Image: <span className="star">*</span>
                                     <Input
                                         name="bookCover"
                                         ref={bookCover}
@@ -185,7 +186,7 @@ const CreateBook = (props) => {
                             </div>
 
                             <div className="form-group">
-                                <label>Enter Book File (.pdf):
+                                <label>Enter Book File (.pdf): <span className="star">*</span>
                                     <Input
                                         name="bookFile"
                                         ref={bookFile}
@@ -194,9 +195,8 @@ const CreateBook = (props) => {
                                     />
                                 </label>
                             </div>
-
                             <div className='form-group'>
-                                <button className='btn btn-block'>Submit</button>
+                                <Button className='btn btn-block'>Submit</Button>
                             </div>
                         </div>
                     )}

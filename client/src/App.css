@@ -84,8 +84,7 @@ select {
   margin: 0;
   position: relative;
   top: 110%;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  align-items: center;
   padding-top:5px;
 }
 
@@ -98,4 +97,10 @@ select {
 
 .navbar-brand {
   font-size: xx-large;
+}
+
+.welcomeName {
+  position: relative;
+  font-size: smaller;
+  bottom: -9px;
 }

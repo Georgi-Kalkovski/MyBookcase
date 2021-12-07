@@ -16,11 +16,10 @@ import BoardUser from './components/Boards/BoardUser';
 import BoardModerator from './components/Boards/BoardModerator';
 import BoardAdmin from './components/Boards/BoardAdmin';
 
+import BookGenres from './components/BooksComponents/Create/BookGenres';
 import BookCreate from './components/BooksComponents/Create/BookCreate';
 import BookAll from './components/BooksComponents/Read/BookAll';
 import BookPdfViewer from './components/BooksComponents/Read/BookPdfViewer';
-
-import BookGenres from "./components/BooksComponents/Create/BookGenres";
 
 function useQuery() {
   const { search } = useLocation();
@@ -112,8 +111,13 @@ const App = () => {
             )}
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
-                {currentUser.username}
+                My Bookcase
               </Link>
+            </li>
+            <li className='nav-item'>
+              <p className='nav-link welcomeName'>
+                Welcome {currentUser.username} !
+              </p>
             </li>
             <li className='nav-item'>
               <a href='/login' className='nav-link' onClick={logOut}>
@@ -149,7 +153,6 @@ const App = () => {
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
           <Route path='/book/create' element={<BookCreate />} />
-          <Route path='/book/all' element={<BookAll />} />
           <Route path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
           <Route path='/book/read' element={<BookPdfViewer />} />
         </Routes>

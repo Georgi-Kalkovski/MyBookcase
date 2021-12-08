@@ -19,6 +19,10 @@ module.exports = function (app) {
     );
 
     app.get("/api/book/mybooks",
+        controller.allBoard
+    );
+
+    app.get("/api/book/mybooks",
         //[authJwt.verifyToken],
         //controller.myBooksAccess
     );

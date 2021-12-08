@@ -5,9 +5,7 @@ import { Card } from 'react-bootstrap';
 import './BookRead.css';
 import loader from '../../../loader.svg';
 
-const BookRead = ({
-    book
-}) => {
+const BookRead = ({ book }) => {
     const navigate = useNavigate();
     const [loaded, setLoaded] = useState(false);
     return (

@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Search from './components/Search';
 import Footer from './components/Footer';
 
 import BoardUser from './components/Boards/BoardUser';
@@ -19,6 +20,7 @@ import BoardAdmin from './components/Boards/BoardAdmin';
 import BookGenres from './components/BooksComponents/Create/BookGenres';
 import BookCreate from './components/BooksComponents/Create/BookCreate';
 import BookAll from './components/BooksComponents/Read/BookAll';
+import BookMyBooks from './components/BooksComponents/Read/BookMyBooks';
 import BookPdfViewer from './components/BooksComponents/Read/BookPdfViewer';
 
 function useQuery() {
@@ -35,7 +37,6 @@ const App = () => {
   let query = useQuery();
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-
     if (user) {
       setCurrentUser(user);
       setShowModeratorBoard(user.roles.includes('ROLE_MODERATOR'));
@@ -99,6 +100,10 @@ const App = () => {
           </NavDropdown>
         </div>
 
+        <li className='nav-item'>
+          <Search></Search>
+        </li>
+
         {currentUser ? (
           <div className='navbar-nav ml-auto'>
 
@@ -110,8 +115,13 @@ const App = () => {
               </li>
             )}
             <li className='nav-item'>
+              <Link to={'/book/mybooks'} className='nav-link'>
+                My Books
+              </Link>
+            </li>
+            <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
-                My Bookcase
+                Profile
               </Link>
             </li>
             <li className='nav-item'>
@@ -154,6 +164,7 @@ const App = () => {
           <Route path='/admin' element={<BoardAdmin />} />
           <Route path='/book/create' element={<BookCreate />} />
           <Route path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
+          <Route path='/book/mybooks' element={<BookMyBooks userId={currentUser} />} />
           <Route path='/book/read' element={<BookPdfViewer />} />
         </Routes>
       </div>

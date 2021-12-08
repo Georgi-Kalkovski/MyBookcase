@@ -11,6 +11,10 @@ const bookAll = () => {
   return axios.get(API_URL + 'all');
 };
 
+const bookMyBooks = () => {
+  return axios.get(API_URL + 'mybooks');
+};
+
 const bookCreate = (formData) => {
   return axios.post(API_URL + 'create', formData, {
     headers: authHeader(),
@@ -21,5 +25,6 @@ const bookCreate = (formData) => {
 export default {
   bookRead,
   bookAll,
+  bookMyBooks,
   bookCreate,
 };

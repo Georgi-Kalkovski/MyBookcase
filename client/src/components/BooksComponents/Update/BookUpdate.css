@@ -1,0 +1,21 @@
+.btn {
+    margin-top: 25px;
+  background-color:#E0C9A6;
+}
+
+.btn:hover {
+  background-color:#fadbb0;
+}
+
+.card.card-container{
+    cursor:default;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+  color:red;
+}

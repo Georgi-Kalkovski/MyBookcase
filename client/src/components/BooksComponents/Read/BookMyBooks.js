@@ -7,6 +7,7 @@ import BookService from '../../../services/book.service';
 
 const BookMyBooks = ( { userId } ) => {
     const [books, setBooks] = useState([]);
+    console.log(userId);
     useEffect(() => {
         BookService.bookMyBooks()
             .then(res => res.data)

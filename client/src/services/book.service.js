@@ -21,10 +21,17 @@ const bookCreate = (formData) => {
   });
 };
 
+const bookUpdate = (formData) => {
+  return axios.patch(API_URL + 'edit/61adb903be23718a6bb58cbc', formData, {
+    headers: authHeader(),
+  });
+};
+
 
 export default {
   bookRead,
   bookAll,
   bookMyBooks,
   bookCreate,
+  bookUpdate,
 };

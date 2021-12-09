@@ -22,26 +22,21 @@ module.exports = function (app) {
         controller.allBoard
     );
 
-    app.get("/api/book/mybooks",
-        //[authJwt.verifyToken],
-        //controller.myBooksAccess
-    );
-
     app.post(
         "/api/book/create",
         [authJwt.verifyToken],
         controller.createBoard
     );
 
-    app.put(
-        "/api/book/edit",
-        //[authJwt.verifyToken],
-        //controller.editBoard
+    app.patch(
+        "/api/book/edit/:id",
+        [authJwt.verifyToken],
+        controller.editBoard
     );
 
     app.delete(
         "/api/book/delete",
-        //[authJwt.verifyToken],
-        //controller.deleteBoard
+        [authJwt.verifyToken],
+        controller.deleteBoard
     );
 };

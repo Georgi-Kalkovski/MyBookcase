@@ -10,18 +10,18 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import Search from './components/Search';
 import Footer from './components/Footer';
 
 import BoardUser from './components/Boards/BoardUser';
 import BoardModerator from './components/Boards/BoardModerator';
 import BoardAdmin from './components/Boards/BoardAdmin';
 
-import BookGenres from './components/BooksComponents/Create/BookGenres';
-import BookCreate from './components/BooksComponents/Create/BookCreate';
+import BookGenres from './components/BooksComponents/BookGenres';
 import BookAll from './components/BooksComponents/Read/BookAll';
 import BookMyBooks from './components/BooksComponents/Read/BookMyBooks';
 import BookPdfViewer from './components/BooksComponents/Read/BookPdfViewer';
+import BookCreate from './components/BooksComponents/Create/BookCreate';
+import BookUpdate from './components/BooksComponents/Update/BookUpdate';
 
 function useQuery() {
   const { search } = useLocation();
@@ -92,17 +92,13 @@ const App = () => {
           </li>
 
           <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Genres"
-            menuVariant="dark"
+            id='nav-dropdown-dark-example'
+            title='Genres'
+            menuVariant='dark'
           >
             {BookGenres.map(el => <NavDropdown.Item href={`/book/all?genreUrl=${el}`}>{el}</NavDropdown.Item>)}
           </NavDropdown>
         </div>
-
-        <li className='nav-item'>
-          <Search></Search>
-        </li>
 
         {currentUser ? (
           <div className='navbar-nav ml-auto'>
@@ -166,6 +162,7 @@ const App = () => {
           <Route path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
           <Route path='/book/mybooks' element={<BookMyBooks userId={currentUser} />} />
           <Route path='/book/read' element={<BookPdfViewer />} />
+          <Route path='/book/edit/:id' element={<BookUpdate />} />
         </Routes>
       </div>
 

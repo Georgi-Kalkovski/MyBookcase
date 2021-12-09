@@ -14,12 +14,8 @@ exports.allBoard = (req, res) => {
   });
 };
 
-exports.myBooksAccess = (req, res) => {
-  res.status(200).send("My Books Content.");
-};
-
-exports.readBoard = (req, res) => {
-  res.status(200).send("Read Content.");
+exports.readBoard = async (req, res) => {
+  await res.status(200).send("Read Content.");
   return drive.files.list({
     q: `'${folderId}' in parents`
   })
@@ -30,7 +26,7 @@ exports.readBoard = (req, res) => {
       function (err) { console.error("Execute error", err); });
 };
 
-exports.createBoard = (req, res) => {
+exports.createBoard = async (req, res) => {
   const { bookCover, bookFile } = req.files;
   const imageId = [];
   const fileId = [];
@@ -116,7 +112,7 @@ exports.createBoard = (req, res) => {
       });
       console.log(imageId)
       console.log(fileId)
-      book.save();
+      await book.save();
       return;
     } catch (error) {
       console.log(error);
@@ -126,8 +122,15 @@ exports.createBoard = (req, res) => {
   waiting();
 }
 
-exports.editBoard = (req, res) => {
-  res.status(200).send("Edit Content.");
+exports.editBoard = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    Object.assign(book, req.body);
+    book.save();
+    res.send({ book });
+  } catch {
+    res.status(404).send({ error: "Book is not found!" });
+  }
 };
 
 exports.deleteBoard = (req, res) => {

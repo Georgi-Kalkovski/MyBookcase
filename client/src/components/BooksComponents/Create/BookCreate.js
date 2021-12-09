@@ -4,8 +4,8 @@ import Input from "react-validation/build/input";
 import Select from "react-validation/build/select";
 import Button from "react-validation/build/button";
 import CheckButton from "react-validation/build/button";
-import { useNavigate, useHistory } from "react-router-dom";
-import BookGenres from "./BookGenres";
+import { useNavigate } from "react-router-dom";
+import BookGenres from "../BookGenres";
 import BookService from "../../../services/book.service";
 import './BookCreate.css';
 

@@ -4,8 +4,9 @@ import { Row } from 'react-bootstrap';
 
 import BookRead from './BookRead';
 import BookService from '../../../services/book.service';
+import BookSearch from '../BookSearch';
 
-const BookAll = ( { genre } ) => {
+const BookAll = ({ genre }) => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         BookService.bookAll()
@@ -16,10 +17,12 @@ const BookAll = ( { genre } ) => {
     return (
         <div className='container'>
             {!genre ? <h1>All books</h1> : <h1>{genre}</h1>}
-                    <Row>
-                        {books.filter(el => genre ? el.genre === genre : true).map(x => <BookRead key={uuid()} book={x} />)}
-                    </Row>
-        </div>
+            {/*<BookSearch>*/}
+                <Row>
+                    {books.filter(el => genre ? el.genre === genre : true).map(x => <BookRead key={uuid()} book={x} />)}
+                </Row>
+            {/*</BookSearch>*/}
+        </div >
     );
 };
 

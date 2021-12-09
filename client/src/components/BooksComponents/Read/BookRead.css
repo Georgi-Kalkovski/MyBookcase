@@ -14,7 +14,6 @@
 .card {
     max-width:15%;
     margin: 10px 10px;
-    cursor: pointer;
     border-radius: 5px;
     padding: 1% 0%;
     text-align: center;
@@ -24,6 +23,11 @@
     max-height: 200px;
     width: 50%;
     margin:0 23%;
+    cursor: pointer;
+}
+
+.card-title {
+    cursor: pointer;
 }
 
 .booksLoader {

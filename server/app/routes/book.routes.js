@@ -14,6 +14,10 @@ module.exports = function (app) {
         controller.readBoard
     );
 
+    app.get("/api/book/get/:id",
+        controller.getBoard
+    );
+
     app.get("/api/book/all",
         controller.allBoard
     );
@@ -35,7 +39,7 @@ module.exports = function (app) {
     );
 
     app.delete(
-        "/api/book/delete",
+        "/api/book/delete/:id",
         [authJwt.verifyToken],
         controller.deleteBoard
     );

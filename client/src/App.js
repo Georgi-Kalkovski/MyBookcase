@@ -22,6 +22,7 @@ import BookMyBooks from './components/BooksComponents/Read/BookMyBooks';
 import BookPdfViewer from './components/BooksComponents/Read/BookPdfViewer';
 import BookCreate from './components/BooksComponents/Create/BookCreate';
 import BookUpdate from './components/BooksComponents/Update/BookUpdate';
+import BookDelete from './components/BooksComponents/Delete/BookDelete';
 
 function useQuery() {
   const { search } = useLocation();
@@ -163,6 +164,7 @@ const App = () => {
           <Route path='/book/mybooks' element={<BookMyBooks userId={currentUser} />} />
           <Route path='/book/read' element={<BookPdfViewer />} />
           <Route path='/book/edit/:id' element={<BookUpdate />} />
+          <Route path='/book/delete/:id' element={<BookDelete />} />
         </Routes>
       </div>
 

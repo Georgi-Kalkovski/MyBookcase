@@ -65,14 +65,19 @@ const UpdateBook = () => {
     let params = useParams();
 
     useEffect(() => {
-        BookService.bookUpdate()
+        BookService.bookGet(params.id)
             .then(res => res.data)
-            .then(book => setBook(book));
+            .then(book => setBook(book[0]));
     }, []);
 
-    const currentBook = Object.values(book)[0];
-
-    console.log(currentBook);
+    useEffect(() => {
+        if (book._id) {
+            setName(book.name);
+            setAuthor(book.author);
+            setYear(book.year);
+            setGenre(book.genre);
+        }
+    }, [book]);
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -85,7 +90,7 @@ const UpdateBook = () => {
         formData.append('userId', userId);
 
         if (checkBtn.current.context._errors.length === 0) {
-            BookService.bookUpdate(formData).then(
+            BookService.bookUpdate(params.id, formData).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
@@ -115,7 +120,7 @@ const UpdateBook = () => {
                             <div className='form-group'>
                                 <label>Enter Book Name: <span className='star'>*</span>
                                     <Input
-                                        name='bookName'
+                                        name='name'
                                         type='text'
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
@@ -128,7 +133,7 @@ const UpdateBook = () => {
                             <div className='form-group'>
                                 <label>Enter Book Author: <span className='star'>*</span>
                                     <Input
-                                        name='bookAuthor'
+                                        name='author'
                                         type='text'
                                         value={author}
                                         onChange={(e) => setAuthor(e.target.value)}
@@ -141,7 +146,7 @@ const UpdateBook = () => {
                             <div className='form-group'>
                                 <label>Enter Book Year: <span className='star'>*</span>
                                     <Input
-                                        name='bookYear'
+                                        name='year'
                                         type='number'
                                         value={year}
                                         onChange={(e) => setYear(e.target.value)}
@@ -154,7 +159,7 @@ const UpdateBook = () => {
                             <div className='form-group'>
                                 <label>Enter Book Genre: <span className='star'>*</span>
                                     <Select
-                                        name='bookGenre'
+                                        name='genre'
                                         multiple={false}
                                         value={genre}
                                         onChange={(e) => setGenre(e.target.value)}
@@ -164,7 +169,7 @@ const UpdateBook = () => {
                                 </label>
                             </div>
                             <div className='form-group'>
-                                <Button className='btn btn-block'>Submit</Button>
+                                <Button className='btn btn-block align-self-end'>Submit</Button>
                             </div>
                         </div>
                     )}

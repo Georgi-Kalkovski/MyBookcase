@@ -7,6 +7,10 @@ const bookRead = () => {
   return axios.get(API_URL + 'read');
 };
 
+const bookGet = id => {
+  return axios.get(API_URL + 'get/' + id);
+};
+
 const bookAll = () => {
   return axios.get(API_URL + 'all');
 };
@@ -21,8 +25,14 @@ const bookCreate = (formData) => {
   });
 };
 
-const bookUpdate = (formData) => {
-  return axios.patch(API_URL + 'edit/61adb903be23718a6bb58cbc', formData, {
+const bookUpdate = (id, formData) => {
+  return axios.patch(API_URL + 'edit/' + id, formData, {
+    headers: authHeader(),
+  });
+};
+
+const bookDelete = (id, formData) => {
+  return axios.delete(API_URL + 'delete/' + id, formData, {
     headers: authHeader(),
   });
 };
@@ -30,8 +40,10 @@ const bookUpdate = (formData) => {
 
 export default {
   bookRead,
+  bookGet,
   bookAll,
   bookMyBooks,
   bookCreate,
   bookUpdate,
+  bookDelete,
 };

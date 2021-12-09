@@ -14,6 +14,16 @@ exports.allBoard = (req, res) => {
   });
 };
 
+exports.getBoard = async (req,res) => {
+  Book.find({_id: req.params.id}).exec((err, book) => {
+    if (err) {
+      return handleError(err);
+    }
+
+    return res.status(200).json(book)
+  })
+}
+
 exports.readBoard = async (req, res) => {
   await res.status(200).send("Read Content.");
   return drive.files.list({
@@ -123,16 +133,25 @@ exports.createBoard = async (req, res) => {
 }
 
 exports.editBoard = async (req, res) => {
-  try {
-    const book = await Book.findById(req.params.id);
-    Object.assign(book, req.body);
-    book.save();
-    res.send({ book });
-  } catch {
-    res.status(404).send({ error: "Book is not found!" });
-  }
+  console.log(req.params.id);
+  console.log(req.body);
+  Book.findByIdAndUpdate(req.params.id, req.body, (err, book) => {
+    if (err) {
+      return handleError(err);
+    }
+
+    return res.status(200).json(book)
+  })
 };
 
 exports.deleteBoard = (req, res) => {
-  res.status(200).send("Delete Content.");
+  console.log(req.params.id);
+  console.log(req.body);
+  Book.findByIdAndDelete(req.params.id, req.body, (err, book) => {
+    if (err) {
+      return handleError(err);
+    }
+
+    return res.status(200).json(book)
+  })
 };

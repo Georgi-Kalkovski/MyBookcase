@@ -17,6 +17,7 @@
     border-radius: 5px;
     padding: 1% 0%;
     text-align: center;
+    padding-bottom: 0%;
 }
 
 .card img {
@@ -34,4 +35,21 @@
     display: block;
     margin:auto;
     width:100px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+  
+button.all {
+    margin-top: -29px;
+}
+
+button.all a {
+    color: #212529;
+}
+
+.row {
+    padding-bottom: 5%;
 }

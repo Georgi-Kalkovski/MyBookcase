@@ -29,13 +29,21 @@ const BookRead = ({ book }) => {
                 >
                     {book.name}
                 </Card.Title>
-                <Card.Text className='card-text'>{book.author}</Card.Text>
-                <Card.Text className='card-text'>{book.year}</Card.Text>
-                <Card.Text className='card-text'>{book.genre}</Card.Text>
-                {book.userId === userId ?
-                    <button>
-                        <Link to={`/book/edit/${book._id}`}>LINK</Link>
-                    </button> : console.log(book.name + ' doesn\'t belong to the user')}
+                <Card.Text>{book.author}</Card.Text>
+                <Card.Text>{book.year}</Card.Text>
+                <Card.Text>{book.genre}</Card.Text>
+                <div className="card-body">
+                    {book.userId === userId ?
+                        <button class="btn btn-warning all">
+                            <Link to={`/book/edit/${book._id}`}>Edit</Link>
+                        </button> : console.log(book.name + ' doesn\'t belong to the user')}
+                </div>
+                <div className="card-body">
+                    {book.userId === userId ?
+                        <button class="btn btn-danger all">
+                            <Link to={`/book/delete/${book._id}`}>Delete</Link>
+                        </button> : console.log(book.name + ' doesn\'t belong to the user')}
+                </div>
                 {/*<Card.Text className='card-text'><small className='text-muted'>Last updated 3 mins ago</small></Card.Text>*/}
             </Card.Body>
         </Card >

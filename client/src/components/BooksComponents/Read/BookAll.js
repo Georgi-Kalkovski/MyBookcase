@@ -6,7 +6,7 @@ import BookRead from './BookRead';
 import BookService from '../../../services/book.service';
 import BookSearch from '../BookSearch';
 
-const BookAll = ({ genre }) => {
+const BookAll = ({ name, genre }) => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         BookService.bookAll()
@@ -19,7 +19,7 @@ const BookAll = ({ genre }) => {
             {!genre ? <h1>All books</h1> : <h1>{genre}</h1>}
             {/*<BookSearch>*/}
                 <Row>
-                    {books.filter(el => genre ? el.genre === genre : true).map(x => <BookRead key={uuid()} book={x} />)}
+                    {books.sort((a, b) => a.name.localeCompare(b.name)).filter(el => genre ? el.genre === genre : true).map(x => <BookRead key={uuid()} book={x} />)}
                 </Row>
             {/*</BookSearch>*/}
         </div >

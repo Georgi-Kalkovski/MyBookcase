@@ -113,7 +113,7 @@ const UpdateBook = () => {
     return (
         <div className='col-md-12 centered'>
             <div className='card card-container'>
-                <h1>Update Book</h1>
+                <h1>Edit Book</h1>
                 <Form onSubmit={handleUpdate} ref={form}>
                     {!successful && (
                         <div>
@@ -168,8 +168,8 @@ const UpdateBook = () => {
                                     </Select>
                                 </label>
                             </div>
-                            <div className='form-group'>
-                                <Button className='btn btn-block align-self-end'>Submit</Button>
+                            <div className='form-group centered'>
+                                <Button className='btn-warning edit-button'>Edit</Button>
                             </div>
                         </div>
                     )}

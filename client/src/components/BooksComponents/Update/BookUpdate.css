@@ -1,11 +1,3 @@
-.btn {
-    margin-top: 25px;
-  background-color:#E0C9A6;
-}
-
-.btn:hover {
-  background-color:#fadbb0;
-}
 
 .card.card-container{
     cursor:default;
@@ -17,5 +9,20 @@
 }
 
 .star {
-  color:red;
+  color:rgb(206, 25, 25);
+}
+
+.edit-button {
+  text-align: center;
+  padding-block-start: 7px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  margin-left: 0;
+  max-width: 50%;
+  width: 100%;
+  padding: 0;
+  margin-top: 10%;
+  padding: 4% 2%;
+  justify-content: center;
 }

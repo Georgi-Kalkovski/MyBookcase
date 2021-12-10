@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import './BookRead.css';
 import loader from '../../../loader.svg';
+import { Button } from 'semantic-ui-react';
 
 const BookRead = ({ book }) => {
     const navigate = useNavigate();
@@ -32,17 +33,22 @@ const BookRead = ({ book }) => {
                 <Card.Text>{book.author}</Card.Text>
                 <Card.Text>{book.year}</Card.Text>
                 <Card.Text>{book.genre}</Card.Text>
-                <div className="card-body">
-                    {book.userId === userId ?
-                        <button class="btn btn-warning all">
-                            <Link to={`/book/edit/${book._id}`}>Edit</Link>
-                        </button> : console.log(book.name + ' doesn\'t belong to the user')}
-                </div>
-                <div className="card-body">
-                    {book.userId === userId ?
-                        <button class="btn btn-danger all">
-                            <Link to={`/book/delete/${book._id}`}>Delete</Link>
-                        </button> : console.log(book.name + ' doesn\'t belong to the user')}
+                <div className="card-buttons">
+                    {book.userId === userId
+                        ? <Link to={`/book/edit/${book._id}`}>
+                            <button class="btn-warning">
+                                <p>Edit</p>
+                            </button>
+                        </Link>
+                        
+                        : console.log(book.name + ' doesn\'t belong to the user')}
+                    {book.userId === userId
+                        ? <Link to={`/book/delete/${book._id}`}>
+                            <button class="btn-danger">
+                                <p>Delete</p>
+                            </button>
+                        </Link>
+                        : console.log(book.name + ' doesn\'t belong to the user')}
                 </div>
                 {/*<Card.Text className='card-text'><small className='text-muted'>Last updated 3 mins ago</small></Card.Text>*/}
             </Card.Body>

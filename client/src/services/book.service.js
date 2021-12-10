@@ -31,8 +31,8 @@ const bookUpdate = (id, formData) => {
   });
 };
 
-const bookDelete = (id, formData) => {
-  return axios.delete(API_URL + 'delete/' + id, formData, {
+const bookDelete = (id) => {
+  return axios.delete(API_URL + 'delete/' + id, {
     headers: authHeader(),
   });
 };

@@ -1,0 +1,28 @@
+.btn-delete {
+    border: none;
+    border-radius: 25px;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-card img{
+    min-height: 0;
+}
+
+.delete-button {
+    text-align: center;
+    padding-block-start: 7px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    margin-left: 0;
+    max-width: 50%;
+    width: 100%;
+    padding: 0;
+    margin-top: 10%;
+    padding: 4% 2%;
+    justify-content: center;
+  }

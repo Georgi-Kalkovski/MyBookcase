@@ -80,14 +80,6 @@ select {
   background-color:#E0C9A6;
 }
 
-.btn {
-  margin: 0;
-  position: relative;
-  top: 110%;
-  align-items: center;
-  padding-top:5px;
-}
-
 #root div:nth-child(1) nav{
   display: flex;
   justify-content: space-between;

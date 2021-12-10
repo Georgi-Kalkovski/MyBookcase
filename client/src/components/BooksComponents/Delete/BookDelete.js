@@ -1,53 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Form from 'react-validation/build/form';
-import Input from 'react-validation/build/input';
-import Select from 'react-validation/build/select';
 import Button from 'react-validation/build/button';
 import CheckButton from 'react-validation/build/button';
 import { useNavigate, useParams } from 'react-router-dom';
-import BookGenres from '../BookGenres';
 import BookService from '../../../services/book.service';
-//import './BookDelete.css';
-
-const required = (value) => {
-    if (!value) {
-        return (
-            <div className='alert alert-danger' role='alert'>
-                This field is required!
-            </div>
-        );
-    }
-};
-
-const vbookname = (value) => {
-    if (value.length < 2 || value.length > 200) {
-        return (
-            <div className='alert alert-danger' role='alert'>
-                The book name must be between 3 and 200 characters.
-            </div>
-        );
-    }
-};
-
-const vbookauthor = (value) => {
-    if (value.length < 2 || value.length > 100) {
-        return (
-            <div className='alert alert-danger' role='alert'>
-                The password must be between 6 and 40 characters.
-            </div>
-        );
-    }
-};
-
-const vbookyear = (value) => {
-    if (value < 1 || value >= new Date().getFullYear()) {
-        return (
-            <div className='alert alert-danger' role='alert'>
-                Year must be between 1 and {new Date().getFullYear()}.
-            </div>
-        );
-    }
-};
+import './BookDelete.css';
+import {Card} from 'react-bootstrap';
 
 const DeleteBook = () => {
 
@@ -59,6 +17,7 @@ const DeleteBook = () => {
     const [author, setAuthor] = useState('');
     const [year, setYear] = useState('');
     const [genre, setGenre] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState('');
     const [book, setBook] = useState({ });
@@ -76,6 +35,7 @@ const DeleteBook = () => {
             setAuthor(book.author);
             setYear(book.year);
             setGenre(book.genre);
+            setImageUrl(book.imageUrl);
         }
     }, [book]);
 
@@ -116,60 +76,25 @@ const DeleteBook = () => {
                 <h1>Delete Book</h1>
                 <Form onSubmit={handleDelete} ref={form}>
                     {!successful && (
-                        <div>
-                            <div className='form-group'>
-                                <label>Enter Book Name: <span className='star'>*</span>
-                                    <Input
-                                        name='name'
-                                        type='text'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder='Book name...'
-                                        validations={[required, vbookname]}
-                                    />
-                                </label>
-                            </div>
+                        <div class="delete-card">
+                            <Card.Img src={imageUrl}></Card.Img>
+                                <h6>Book Name:
+                                    <h4>{name}</h4>
+                                </h6>
 
-                            <div className='form-group'>
-                                <label>Enter Book Author: <span className='star'>*</span>
-                                    <Input
-                                        name='author'
-                                        type='text'
-                                        value={author}
-                                        onChange={(e) => setAuthor(e.target.value)}
-                                        placeholder='Book author...'
-                                        validations={[required, vbookauthor]}
-                                    />
-                                </label>
-                            </div>
+                                <h6>Book Author:
+                                    <h5>{author}</h5>
+                                </h6>
 
-                            <div className='form-group'>
-                                <label>Enter Book Year: <span className='star'>*</span>
-                                    <Input
-                                        name='year'
-                                        type='number'
-                                        value={year}
-                                        onChange={(e) => setYear(e.target.value)}
-                                        placeholder='Book year...'
-                                        validations={[required, vbookyear]}
-                                    />
-                                </label>
-                            </div>
+                                <h6>Book Year:
+                                    <h5>{year}</h5>
+                                </h6>
 
-                            <div className='form-group'>
-                                <label>Enter Book Genre: <span className='star'>*</span>
-                                    <Select
-                                        name='genre'
-                                        multiple={false}
-                                        value={genre}
-                                        onChange={(e) => setGenre(e.target.value)}
-                                    >
-                                        {BookGenres.map(el => <option value={el}>{el}</option>)}
-                                    </Select>
-                                </label>
-                            </div>
-                            <div className='form-group'>
-                                <Button className='btn btn-block align-self-end'>Submit</Button>
+                                <h6>Book Genre:
+                                    <h5>{genre}</h5>
+                                </h6>
+                            <div className='form-group centered'>
+                                <Button className='btn-danger delete-button'>Delete</Button>
                             </div>
                         </div>
                     )}

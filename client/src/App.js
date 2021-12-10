@@ -78,13 +78,13 @@ const App = () => {
             </li>
           )}
 
-          {currentUser && (
+          {/*currentUser && (
             <li className='nav-item'>
               <Link to={'/user'} className='nav-link'>
                 User
               </Link>
             </li>
-          )}
+          )*/}
 
           <li className='nav-item'>
             <Link to={'/book/all'} className='nav-link'>
@@ -116,11 +116,11 @@ const App = () => {
                 My Books
               </Link>
             </li>
-            <li className='nav-item'>
+            {/*<li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
                 Profile
               </Link>
-            </li>
+            </li>*/}
             <li className='nav-item'>
               <p className='nav-link welcomeName'>
                 Welcome {currentUser.username} !

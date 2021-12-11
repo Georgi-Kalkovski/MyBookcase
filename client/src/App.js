@@ -122,9 +122,9 @@ const App = () => {
               </Link>
             </li>*/}
             <li className='nav-item'>
-              <p className='nav-link welcomeName'>
-                Welcome {currentUser.username} !
-              </p>
+              <Link to={'/profile'} className='nav-link'>
+              Welcome {currentUser.username} !
+              </Link>
             </li>
             <li className='nav-item'>
               <a href='/login' className='nav-link' onClick={logOut}>

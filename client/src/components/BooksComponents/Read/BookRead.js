@@ -41,14 +41,14 @@ const BookRead = ({ book }) => {
                             </button>
                         </Link>
                         
-                        : console.log(book.name + ' doesn\'t belong to the user')}
+                        :  '' /*console.log(book.name + ' doesn\'t belong to the user')*/}
                     {book.userId === userId
                         ? <Link to={`/book/delete/${book._id}`}>
                             <button class="btn-danger">
                                 <p>Delete</p>
                             </button>
                         </Link>
-                        : console.log(book.name + ' doesn\'t belong to the user')}
+                        : '' /*console.log(book.name + ' doesn\'t belong to the user')*/}
                 </div>
                 {/*<Card.Text className='card-text'><small className='text-muted'>Last updated 3 mins ago</small></Card.Text>*/}
             </Card.Body>

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import './BookRead.css';
 import loader from '../../../loader.svg';
-import { Button } from 'semantic-ui-react';
 
 const BookRead = ({ book }) => {
     const navigate = useNavigate();

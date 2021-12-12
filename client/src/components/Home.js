@@ -15,10 +15,10 @@ const BookAll = ({ name, genre }) => {
     const shuffledBoosk = shuffle(books);
 
     return (
-        <div className='container' style={{ textAlign: 'center', paddingTop: '2vh' }}>
-            <h5>Welcome to </h5><spam className="logoName" style={{fontSize: '55px'}}>MyBookcase</spam>
+        <div className='container' style={{ textAlign: 'center', paddingTop: '3vh' }}>
+            <h5 style={{marginBottom:'-12px'}}>Welcome to </h5><spam className="logoName" style={{fontSize: '55px'}}>MyBookcase</spam>
             <h5 style={{ }}>A place where you can upload your books and share them with your friends.</h5>
-            <h6 style={{ paddingTop: '5vh' }}>Looking for something to read? Here are four random books to get you started!</h6>
+            <h6 style={{ paddingTop: '6vh' }}>Looking for something to read? Here are four random books to get you started!</h6>
 
 
             <div>

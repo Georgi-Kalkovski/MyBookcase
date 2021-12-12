@@ -84,6 +84,7 @@ const UpdateBook = () => {
 
         setMessage('');
         setSuccessful(false);
+        navigate(-1);
 
         const userId = JSON.parse(localStorage.getItem('user'))?.id;
         const formData = new FormData(e.target);

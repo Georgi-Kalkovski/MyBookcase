@@ -54,7 +54,7 @@ const vbookimage = (value) => {
     if (!value.toLowerCase().endsWith('.jpg') && !value.toLowerCase().endsWith('.jpeg') && !value.toLowerCase().endsWith('.png')) {
         return (
             <div className="alert alert-danger" role="alert">
-                Your image must be in jpg,jpeg or png format.
+                Your image must be in jpg, jpeg or png format.
             </div>
         );
     }
@@ -75,7 +75,7 @@ const CreateBook = (props) => {
     const checkBtn = useRef();
     const bookCover = useRef();
     const bookFile = useRef();
-    const navigate = useNavigate('/home');
+    const navigate = useNavigate();
 
     const [name, setName] = useState("");
     const [author, setAuthor] = useState("");
@@ -99,6 +99,7 @@ const CreateBook = (props) => {
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
+                    navigate('/');
                 },
                 (error) => {
                     const resMessage =

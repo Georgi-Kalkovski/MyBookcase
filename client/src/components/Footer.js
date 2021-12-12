@@ -13,7 +13,7 @@ const Footer = () => (
             <nav id="footerNav">
                 <div className="container">
                     <ul>
-                        <li id="contactMeText">Contact Me: </li>
+                        <p style={{color:'#ad9b80', marginBottom:'-5px', fontSize: '10px'}}>Made with much ❤️ by Georgi Kalkovski aka Terter</p>
                         <a className="contactMe nav-link" href="https://github.com/Georgi-Kalkovski"><img src={github} /></a>
                         <a className="contactMe nav-link" href="https://www.linkedin.com/in/georgi-kalkovski/"><img src={linkedin} /></a>
                         <a className="contactMe nav-link" href="mailto:g.kalkovski.92@gmail.com"><img src={gmail} /></a>

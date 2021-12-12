@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
+import ErrorPage from './components/ErrorPage';
 
 import BoardUser from './components/Boards/BoardUser';
 import BoardModerator from './components/Boards/BoardModerator';
@@ -53,7 +54,7 @@ const App = () => {
     <div>
       <nav className='navbar navbar-expand navbar-dark bg-dark ml-auto'>
         <Link to={'/'} className='navbar-brand'>
-          MyBookcase
+          <spam className="logoName">MyBookcase</spam>
         </Link>
         <div className='navbar-nav mr-auto'>
           <li className='nav-item'>
@@ -123,7 +124,7 @@ const App = () => {
             </li>*/}
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
-              Welcome {currentUser.username} !
+                Welcome {currentUser.username} !
               </Link>
             </li>
             <li className='nav-item'>
@@ -151,20 +152,21 @@ const App = () => {
 
       <div className='container mt-3'>
         <Routes>
+          <Route path='*' element={<ErrorPage />} />
           <Route exact path='/' element={<Home />} />
           <Route exact path='/home' element={<Home />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/profile' element={<Profile />} />
-          <Route path='/user' element={<BoardUser />} />
-          <Route path='/mod' element={<BoardModerator />} />
-          <Route path='/admin' element={<BoardAdmin />} />
-          <Route path='/book/create' element={<BookCreate />} />
-          <Route path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
-          <Route path='/book/mybooks' element={<BookMyBooks userId={currentUser} />} />
-          <Route path='/book/read' element={<BookPdfViewer />} />
-          <Route path='/book/edit/:id' element={<BookUpdate />} />
-          <Route path='/book/delete/:id' element={<BookDelete />} />
+          <Route exact path='/user' element={<BoardUser />} />
+          <Route exact path='/mod' element={<BoardModerator />} />
+          <Route exact path='/admin' element={<BoardAdmin />} />
+          <Route exact path='/book/create' element={<BookCreate />} />
+          <Route exact path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
+          <Route exact path='/book/mybooks' element={<BookMyBooks userId={currentUser} />} />
+          <Route exact path='/book/read' element={<BookPdfViewer />} />
+          <Route exact path='/book/edit/:id' element={<BookUpdate />} />
+          <Route exact path='/book/delete/:id' element={<BookDelete />} />
         </Routes>
       </div>
 

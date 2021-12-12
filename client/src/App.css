@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
 body {
   background-image: url('./old-page-background.jpg');
@@ -6,6 +7,10 @@ body {
 
 h1 h2 h3 h4 h5 h6 {
   color:#212529;
+}
+
+.logoName {
+  font-family: Handlee;
 }
 
 label {
@@ -35,6 +40,7 @@ label {
 .profile-img-card {
   width: 96px;
   height: 96px;
+  max-height: 110px;
   margin: 0 auto 10px;
   display: block;
   -moz-border-radius: 50%;
@@ -73,6 +79,7 @@ input[type="number"] {
 
 input[type="file"] {
   cursor:pointer;
+  color:#373e44
 }
 
 select {
@@ -95,4 +102,9 @@ select {
   position: relative;
   font-size: smaller;
   bottom: -9px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
 }

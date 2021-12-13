@@ -56,6 +56,27 @@ a:hover {
 }
 
 .arrowUp {
-    position: absolute;
-    z-index: 9999;
+	position: absolute;
+	width: 45px;
+	height: 45px;
+	color: #ad9b80;
+    border: 2px #ad9b80 solid;
+	border-radius: 50%;
+	bottom: 10px;
+	right: 40px;
+	z-index: 11;
+	transition: 0.3s;
+}
+
+.arrowUp:hover {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	color: #E0C9A6;
+    border: 3px #E0C9A6 solid;
+	border-radius: 50%;
+	bottom: 10px;
+	right: 40px;
+	z-index: 11;
+	transition: 0.3s;
 }

@@ -9,6 +9,10 @@ h1 h2 h3 h4 h5 h6 {
   color:#212529;
 }
 
+a {
+  font-weight:500;
+}
+
 .logoName {
   font-family: Handlee;
 }
@@ -16,6 +20,10 @@ h1 h2 h3 h4 h5 h6 {
 label {
   display: block;
   margin-top: 10px;
+}
+
+.welcomeUser {
+  font-size: 75%;
 }
 
 .card-container.card {

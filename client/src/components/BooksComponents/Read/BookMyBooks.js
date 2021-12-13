@@ -17,19 +17,22 @@ const BookMyBooks = ({ userId }) => {
     }, []);
 
     return (
-        <div className='container' style={{ textAlign: 'center', paddingTop: '5vh' }}>
-            <input
-            
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                placeholder='Search for a name!'
-            />
-            <Row>
-                {books
-                    .filter(el => userId ? el.userId === userId.id : true)
-                    .filter(el => searchTerm ? el.name.includes(searchTerm) : true)
-                    .map(x => <BookRead key={uuid()} book={x} />)}
-            </Row>
+
+        <div style={{ textAlign: 'center' }}>{<h1>My books</h1>}
+            <div className='container' style={{ textAlign: 'center', paddingTop: '5vh' }}>
+                <input
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    placeholder='Search for a book!'
+                    className='search-bar'
+                />
+                <Row>
+                    {books
+                        .filter(el => userId ? el.userId === userId.id : true)
+                        .filter(el => searchTerm ? el.name.includes(searchTerm) : true)
+                        .map(x => <BookRead key={uuid()} book={x} />)}
+                </Row>
+            </div>
         </div>
     );
 };

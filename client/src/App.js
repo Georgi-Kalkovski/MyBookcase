@@ -124,7 +124,7 @@ const App = () => {
             </li>*/}
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
-                Welcome {currentUser.username} !
+                <span className='welcomeUser'>Welcome </span>{currentUser.username} !
               </Link>
             </li>
             <li className='nav-item'>

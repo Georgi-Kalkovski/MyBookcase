@@ -69,6 +69,10 @@ a:hover {
 	transition: 0.3s;
 }
 
+.arrowUp a {
+	transition: 0.3s;
+}
+
 .arrowUp:hover {
 	position: absolute;
 	height: 50px;

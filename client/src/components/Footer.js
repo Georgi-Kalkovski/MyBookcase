@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import github from './img/github.svg';
 import linkedin from './img/linkedin.svg';
@@ -7,16 +7,26 @@ import facebook from './img/facebook.svg';
 import discord from './img/discord.svg';
 
 const Footer = () => {
-    const arrow = useRef(null);
+    const [isVisible, setIsVisible] = useState(true);
 
-    const myScrollFunc = () => (() => {
-        var y = arrow.current.focus();
-        if (y >= 100) {
-            arrow.current.style.display = 'block';
+    useEffect(() => {   
+        window.addEventListener("scroll", listenToScroll);
+        return () => 
+           window.removeEventListener("scroll", listenToScroll); 
+      }, []);
+      
+      const listenToScroll = () => {
+        let heightToHideFrom = 10;
+        const winScroll = document.body.scrollTop || 
+            document.documentElement.scrollTop;
+           
+        if (winScroll < heightToHideFrom) { 
+           isVisible &&        
+             setIsVisible(false);
         } else {
-            arrow.current.style.display = 'none';
-        }
-    });
+             setIsVisible(true);
+        }  
+      };
 
     return (
         <div className='footer'>
@@ -38,11 +48,13 @@ const Footer = () => {
                 <div id='copyright'>
                     <a href='https://github.com/Georgi-Kalkovski/MyBookcase'>&copy; MyBookcase - {new Date().getFullYear()}</a>
                 </div>
-
-                <div ref={arrow} onScroll={myScrollFunc}>
-                    <a href='#' className='arrowUp'><h3>⮝</h3></a>
-                </div>
-
+                {
+                    isVisible
+                    &&
+                    <div id='hide'>
+                        <a href='#' className='arrowUp'><h3>⮝</h3></a>
+                    </div>
+                }
             </footer>
         </div>
     );

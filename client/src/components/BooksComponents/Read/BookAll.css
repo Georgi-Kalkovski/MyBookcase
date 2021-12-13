@@ -2,7 +2,7 @@
     border: 2.5px #212529 solid;
     border-radius: 5px;
     background-color: #E0C9A6;
-    width: 15%;
+    width: 16%;
     margin-bottom:22px;
     text-indent: 10px;
     font-weight:500;
@@ -10,4 +10,8 @@
 
 .search-bar::placeholder {
     font-style: italic;
+}
+
+.row {
+    margin-bottom: 7%;
 }

@@ -26,7 +26,7 @@ const BookAll = ({ name, genre }) => {
                 <input
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
-                    placeholder='Search for a book!'
+                    placeholder='Search by book name, author or year...'
                     className='search-bar'
                 />
                 <Row>
@@ -37,12 +37,11 @@ const BookAll = ({ name, genre }) => {
                                 return true;
                             } else if (el.author.includes(searchTerm)) {
                                 return true;
-                            } else if (typeof searchTerm == 'number') {
-                                if (el.year.includes(searchTerm)) {
-                                    return true;
-                                }
+                            } else if (el.year.toString().includes(searchTerm)) {
+                                return true;
                             } else { return false; }
                         })
+                        .filter(el => genre ? el.genre === genre : true)
                         .map(x => <BookRead key={uuid()} book={x} />)
                     }
                 </Row>

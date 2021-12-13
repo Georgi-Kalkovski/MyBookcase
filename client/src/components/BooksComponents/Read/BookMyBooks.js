@@ -23,14 +23,23 @@ const BookMyBooks = ({ userId }) => {
                 <input
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
-                    placeholder='Search for a book!'
+                    placeholder='Search by book name, author or year...'
                     className='search-bar'
                 />
                 <Row>
                     {books
-                        .filter(el => userId ? el.userId === userId.id : true)
-                        .filter(el => searchTerm ? el.name.includes(searchTerm) : true)
-                        .map(x => <BookRead key={uuid()} book={x} />)}
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .filter(el => {
+                            if (el.name.includes(searchTerm)) {
+                                return true;
+                            } else if (el.author.includes(searchTerm)) {
+                                return true;
+                            } else if (el.year.toString().includes(searchTerm)) {
+                                return true;
+                            } else { return false; }
+                        })
+                        .map(x => <BookRead key={uuid()} book={x} />)
+                    }
                 </Row>
             </div>
         </div>

@@ -1,14 +1,14 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthService from '../../../services/auth.service';
-import BookService from "../../../services/book.service";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Textarea from "react-validation/build/textarea";
-import Select from "react-validation/build/select";
-import Button from "react-validation/build/button";
-import CheckButton from "react-validation/build/button";
-import BookGenres from "../BookGenres";
+import BookService from '../../../services/book.service';
+import Form from 'react-validation/build/form';
+import Input from 'react-validation/build/input';
+import Textarea from 'react-validation/build/textarea';
+import Select from 'react-validation/build/select';
+import Button from 'react-validation/build/button';
+import CheckButton from 'react-validation/build/button';
+import BookGenres from '../BookGenres';
 import ErrorPage from '../../ErrorPage';
 import './BookCreate.css';
 
@@ -16,7 +16,7 @@ import './BookCreate.css';
 const required = (value) => {
     if (!value) {
         return (
-            <div className="alert alert-danger" role="alert">
+            <div className='alert alert-danger' role='alert'>
                 This field is required!
             </div>
         );
@@ -26,7 +26,7 @@ const required = (value) => {
 const vbookname = (value) => {
     if (value.length < 2 || value.length > 200) {
         return (
-            <div className="alert alert-danger" role="alert">
+            <div className='alert alert-danger' role='alert'>
                 The book name must be between 3 and 200 characters.
             </div>
         );
@@ -36,7 +36,7 @@ const vbookname = (value) => {
 const vbookauthor = (value) => {
     if (value.length < 2 || value.length > 100) {
         return (
-            <div className="alert alert-danger" role="alert">
+            <div className='alert alert-danger' role='alert'>
                 The password must be between 6 and 40 characters.
             </div>
         );
@@ -46,7 +46,7 @@ const vbookauthor = (value) => {
 const vbookyear = (value) => {
     if (value < 1 || value >= new Date().getFullYear()) {
         return (
-            <div className="alert alert-danger" role="alert">
+            <div className='alert alert-danger' role='alert'>
                 Year must be between 1 and {new Date().getFullYear()}.
             </div>
         );
@@ -56,7 +56,7 @@ const vbookyear = (value) => {
 const vbookimage = (value) => {
     if (!value.toLowerCase().endsWith('.jpg') && !value.toLowerCase().endsWith('.jpeg') && !value.toLowerCase().endsWith('.png')) {
         return (
-            <div className="alert alert-danger" role="alert">
+            <div className='alert alert-danger' role='alert'>
                 Your image must be in jpg, jpeg or png format.
             </div>
         );
@@ -66,7 +66,7 @@ const vbookimage = (value) => {
 const vbookfile = (value) => {
     if (!value.endsWith('.pdf')) {
         return (
-            <div className="alert alert-danger" role="alert">
+            <div className='alert alert-danger' role='alert'>
                 Your file must be in pdf format.
             </div>
         );
@@ -80,11 +80,11 @@ const CreateBook = (props) => {
     const bookFile = useRef();
     const navigate = useNavigate();
 
-    const [name, setName] = useState("");
-    const [author, setAuthor] = useState("");
-    const [year, setYear] = useState("");
-    const [genre, setGenre] = useState("");
-    const [summary, setSummary] = useState("");
+    const [name, setName] = useState('');
+    const [author, setAuthor] = useState('');
+    const [year, setYear] = useState('');
+    const [genre, setGenre] = useState('');
+    const [summary, setSummary] = useState('');
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState('');
 
@@ -136,52 +136,52 @@ const CreateBook = (props) => {
                             <div>
 
                                 {/*Name*/}
-                                <div className="form-group">
-                                    <label>Enter Book Name: <span className="star">*</span>
+                                <div className='form-group'>
+                                    <label>Enter Book Name: <span className='star'>*</span>
                                         <Input
-                                            name="bookName"
-                                            type="text"
+                                            name='bookName'
+                                            type='text'
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            placeholder="Book name..."
+                                            placeholder='Book name...'
                                             validations={[required, vbookname]}
                                         />
                                     </label>
                                 </div>
 
                                 {/*Author*/}
-                                <div className="form-group">
-                                    <label>Enter Book Author: <span className="star">*</span>
+                                <div className='form-group'>
+                                    <label>Enter Book Author: <span className='star'>*</span>
                                         <Input
-                                            name="bookAuthor"
-                                            type="text"
+                                            name='bookAuthor'
+                                            type='text'
                                             value={author}
                                             onChange={(e) => setAuthor(e.target.value)}
-                                            placeholder="Book author..."
+                                            placeholder='Book author...'
                                             validations={[required, vbookauthor]}
                                         />
                                     </label>
                                 </div>
 
                                 {/*Year*/}
-                                <div className="form-group">
-                                    <label>Enter Book Year: <span className="star">*</span>
+                                <div className='form-group'>
+                                    <label>Enter Book Year: <span className='star'>*</span>
                                         <Input
-                                            name="bookYear"
-                                            type="number"
+                                            name='bookYear'
+                                            type='number'
                                             value={year}
                                             onChange={(e) => setYear(e.target.value)}
-                                            placeholder="Book year..."
+                                            placeholder='Book year...'
                                             validations={[required, vbookyear]}
                                         />
                                     </label>
                                 </div>
 
                                 {/*Genre*/}
-                                <div className="form-group">
-                                    <label>Enter Book Genre: <span className="star">*</span>
+                                <div className='form-group'>
+                                    <label>Enter Book Genre: <span className='star'>*</span>
                                         <Select
-                                            name="bookGenre"
+                                            name='bookGenre'
                                             multiple={false}
                                             value={genre}
                                             onChange={(e) => setGenre(e.target.value)}
@@ -192,38 +192,38 @@ const CreateBook = (props) => {
                                 </div>
 
                                 {/*Summary*/}
-                                <div className="form-group">
+                                <div className='form-group'>
                                     <label>Enter Book Summary:
                                         <Textarea
-                                            rows="4" cols="33"
-                                            name="bookSummary"
-                                            type="textarea"
+                                            rows='4' cols='33'
+                                            name='bookSummary'
+                                            type='textarea'
                                             value={summary}
                                             onChange={(e) => setSummary(e.target.value)}
-                                            placeholder="Book summary..."
+                                            placeholder='Book summary...'
                                         />
                                     </label>
                                 </div>
 
                                 {/*Image*/}
-                                <div className="form-group">
-                                    <label>Enter Book Cover Image: <span className="star">*</span>
+                                <div className='form-group'>
+                                    <label>Enter Book Cover Image: <span className='star'>*</span>
                                         <Input
-                                            name="bookCover"
+                                            name='bookCover'
                                             ref={bookCover}
-                                            type="file"
+                                            type='file'
                                             validations={[required, vbookimage]}
                                         />
                                     </label>
                                 </div>
 
                                 {/*File*/}
-                                <div className="form-group">
-                                    <label>Enter Book File (.pdf): <span className="star">*</span>
+                                <div className='form-group'>
+                                    <label>Enter Book File (.pdf): <span className='star'>*</span>
                                         <Input
-                                            name="bookFile"
+                                            name='bookFile'
                                             ref={bookFile}
-                                            type="file"
+                                            type='file'
                                             validations={[required, vbookfile]}
                                         />
                                     </label>
@@ -235,16 +235,16 @@ const CreateBook = (props) => {
                             </div>
                         )}
                         {message && (
-                            <div className="form-group">
+                            <div className='form-group'>
                                 <div
-                                    className={successful ? "alert alert-success" : "alert alert-danger"}
-                                    role="alert"
+                                    className={successful ? 'alert alert-success' : 'alert alert-danger'}
+                                    role='alert'
                                 >
                                     {message}
                                 </div>
                             </div>
                         )}
-                        <CheckButton onClick={() => redirectIfTrue(successful, navigate)} style={{ display: "none" }} ref={checkBtn} />
+                        <CheckButton onClick={() => redirectIfTrue(successful, navigate)} style={{ display: 'none' }} ref={checkBtn} />
                     </Form>
                 </div>
             </div>

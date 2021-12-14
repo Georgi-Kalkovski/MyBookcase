@@ -86,7 +86,7 @@ const DeleteBook = () => {
                     <h1>Delete Book</h1>
                     <Form onSubmit={handleDelete} ref={form}>
                         {!successful && (
-                            <div class="delete-card">
+                            <div class='delete-card'>
                                 <Card.Img src={imageUrl}></Card.Img>
                                 <h6>Book Name:
                                     <h4>{name}</h4>

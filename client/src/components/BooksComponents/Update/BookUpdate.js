@@ -185,15 +185,15 @@ const UpdateBook = () => {
                                 </div>
 
                                 {/*Summary*/}
-                                <div className="form-group">
+                                <div className='form-group'>
                                     <label>Enter Book Summary:
                                         <Textarea
-                                            rows="4" cols="33"
-                                            name="bookSummary"
-                                            type="textarea"
+                                            rows='4' cols='33'
+                                            name='bookSummary'
+                                            type='textarea'
                                             value={summary}
                                             onChange={(e) => setSummary(e.target.value)}
-                                            placeholder="Book summary..."
+                                            placeholder='Book summary...'
                                         />
                                     </label>
                                 </div>

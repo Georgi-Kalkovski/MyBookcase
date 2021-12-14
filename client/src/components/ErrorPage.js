@@ -1,4 +1,3 @@
-import { Link, useNavigate } from 'react-router-dom';
 import {ReactComponent as ErrorSvg} from '../error.svg';
 import './ErrorPage.css';
 

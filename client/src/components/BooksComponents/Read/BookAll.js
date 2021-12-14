@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import uuid from 'node-uuid';
 import { Row } from 'react-bootstrap';
-import Select from "react-validation/build/select";
-
-import BookRead from './BookRead';
+import uuid from 'node-uuid';
 import BookService from '../../../services/book.service';
+import BookRead from './BookRead';
 import './BookAll.css';
 
 const BookAll = ({ name, genre }) => {

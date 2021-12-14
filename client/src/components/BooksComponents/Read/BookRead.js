@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
-import './BookRead.css';
 import loader from '../../../loader.svg';
+import './BookRead.css';
 
 const BookRead = ({ book }) => {
     const navigate = useNavigate();

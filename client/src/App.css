@@ -86,6 +86,11 @@ input[type="number"] {
   background-color:#E0C9A6;
 }
 
+input[type="password"] {
+  cursor:pointer;
+  background-color:#E0C9A6;
+}
+
 input[type="file"] {
   cursor:pointer;
   color:#373e44

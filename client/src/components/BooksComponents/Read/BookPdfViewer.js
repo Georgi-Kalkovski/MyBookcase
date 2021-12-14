@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import './BookPdfViewer.css';
 import loader from '../../../loader.svg';
+import './BookPdfViewer.css';
 
 const BookPdfViewer = () => {
     const [loaded, setLoaded] = useState(false);

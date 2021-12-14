@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import uuid from 'node-uuid';
 import { Row } from 'react-bootstrap';
-
-import BookRead from './BookRead';
+import uuid from 'node-uuid';
 import BookService from '../../../services/book.service';
+import BookRead from './BookRead';
 
 const BookMyBooks = ({ userId }) => {
     const [books, setBooks] = useState([]);
@@ -29,6 +28,7 @@ const BookMyBooks = ({ userId }) => {
                 <Row>
                     {books
                         .sort((a, b) => a.name.localeCompare(b.name))
+                        .filter(el => userId ? el.userId === userId.id : true)
                         .filter(el => {
                             if (el.name.includes(searchTerm)) {
                                 return true;

@@ -123,7 +123,7 @@ const App = () => {
               </Link>
             </li>*/}
             <li className='nav-item'>
-              <Link to={'/profile'} className='nav-link'>
+              <Link to={'*'} className='nav-link'>
                 <span className='welcomeUser'>Welcome </span>{currentUser.username} !
               </Link>
             </li>
@@ -163,7 +163,7 @@ const App = () => {
           <Route exact path='/admin' element={<BoardAdmin />} />
           <Route exact path='/book/create' element={<BookCreate />} />
           <Route exact path='/book/all' element={<BookAll genre={query.get('genreUrl')} />} />
-          <Route exact path='/book/mybooks' element={<BookMyBooks userId={currentUser} />} />
+          <Route exact path='/book/mybooks' element={<BookMyBooks />} />
           <Route exact path='/book/read' element={<BookPdfViewer />} />
           <Route exact path='/book/edit/:id' element={<BookUpdate />} />
           <Route exact path='/book/delete/:id' element={<BookDelete />} />

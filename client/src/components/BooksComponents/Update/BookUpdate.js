@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import AuthService from '../../../services/auth.service';
 import BookService from '../../../services/book.service';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
@@ -8,6 +9,7 @@ import Select from 'react-validation/build/select';
 import Button from 'react-validation/build/button';
 import CheckButton from 'react-validation/build/button';
 import BookGenres from '../BookGenres';
+import ErrorPage from '../../ErrorPage';
 import './BookUpdate.css';
 
 const required = (value) => {
@@ -114,104 +116,115 @@ const UpdateBook = () => {
         };
     };
 
-    return (
-        <div className='col-md-12 centered'>
-            <div className='card card-container'>
-                <h1>Edit Book</h1>
-                <Form onSubmit={handleUpdate} ref={form}>
-                    {!successful && (
-                        <div>
+    const user = AuthService.getCurrentUser();
+    if (!user) {
+        return (
+            <>
+                <ErrorPage />
+            </>
+        );
+    } else if (user.id === book.userId) {
+        return (
+            <div className='col-md-12 centered'>
+                <div className='card card-container'>
+                    <h1>Edit Book</h1>
+                    <Form onSubmit={handleUpdate} ref={form}>
+                        {!successful && (
+                            <div>
+                                {/*Name*/}
+                                <div className='form-group'>
+                                    <label>Enter Book Name: <span className='star'>*</span>
+                                        <Input
+                                            name='name'
+                                            type='text'
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            placeholder='Book name...'
+                                            validations={[required, vbookname]}
+                                        />
+                                    </label>
+                                </div>
 
-                            {/*Name*/}
+                                <div className='form-group'>
+                                    <label>Enter Book Author: <span className='star'>*</span>
+                                        <Input
+                                            name='author'
+                                            type='text'
+                                            value={author}
+                                            onChange={(e) => setAuthor(e.target.value)}
+                                            placeholder='Book author...'
+                                            validations={[required, vbookauthor]}
+                                        />
+                                    </label>
+                                </div>
+
+                                <div className='form-group'>
+                                    <label>Enter Book Year: <span className='star'>*</span>
+                                        <Input
+                                            name='year'
+                                            type='number'
+                                            value={year}
+                                            onChange={(e) => setYear(e.target.value)}
+                                            placeholder='Book year...'
+                                            validations={[required, vbookyear]}
+                                        />
+                                    </label>
+                                </div>
+
+                                <div className='form-group'>
+                                    <label>Enter Book Genre: <span className='star'>*</span>
+                                        <Select
+                                            name='genre'
+                                            multiple={false}
+                                            value={genre}
+                                            onChange={(e) => setGenre(e.target.value)}
+                                        >
+                                            {BookGenres.map(el => <option value={el}>{el}</option>)}
+                                        </Select>
+                                    </label>
+                                </div>
+
+                                {/*Summary*/}
+                                <div className="form-group">
+                                    <label>Enter Book Summary:
+                                        <Textarea
+                                            rows="4" cols="33"
+                                            name="bookSummary"
+                                            type="textarea"
+                                            value={summary}
+                                            onChange={(e) => setSummary(e.target.value)}
+                                            placeholder="Book summary..."
+                                        />
+                                    </label>
+                                </div>
+
+                                <div className='form-group centered'>
+                                    <Button className='btn-warning edit-button'>Edit</Button>
+                                </div>
+                            </div>
+                        )}
+                        {message && (
                             <div className='form-group'>
-                                <label>Enter Book Name: <span className='star'>*</span>
-                                    <Input
-                                        name='name'
-                                        type='text'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder='Book name...'
-                                        validations={[required, vbookname]}
-                                    />
-                                </label>
+                                <div
+                                    className={successful ? 'alert alert-success' : 'alert alert-danger'}
+                                    role='alert'
+                                >
+                                    {message}
+                                </div>
                             </div>
-
-                            {/*Author*/}
-                            <div className='form-group'>
-                                <label>Enter Book Author: <span className='star'>*</span>
-                                    <Input
-                                        name='author'
-                                        type='text'
-                                        value={author}
-                                        onChange={(e) => setAuthor(e.target.value)}
-                                        placeholder='Book author...'
-                                        validations={[required, vbookauthor]}
-                                    />
-                                </label>
-                            </div>
-
-                            {/*Year*/}
-                            <div className='form-group'>
-                                <label>Enter Book Year: <span className='star'>*</span>
-                                    <Input
-                                        name='year'
-                                        type='number'
-                                        value={year}
-                                        onChange={(e) => setYear(e.target.value)}
-                                        placeholder='Book year...'
-                                        validations={[required, vbookyear]}
-                                    />
-                                </label>
-                            </div>
-
-                            {/*Genre*/}
-                            <div className='form-group'>
-                                <label>Enter Book Genre: <span className='star'>*</span>
-                                    <Select
-                                        name='genre'
-                                        multiple={false}
-                                        value={genre}
-                                        onChange={(e) => setGenre(e.target.value)}
-                                    >
-                                        {BookGenres.map(el => <option value={el}>{el}</option>)}
-                                    </Select>
-                                </label>
-                            </div>
-
-                            {/*Summary*/}
-                            <div className="form-group">
-                                <label>Enter Book Summary:
-                                    <Textarea
-                                        rows="4" cols="33"
-                                        name="summary"
-                                        type="textarea"
-                                        value={summary}
-                                        onChange={(e) => setSummary(e.target.value)}
-                                        placeholder="Book summary..."
-                                    />
-                                </label>
-                            </div>
-
-                            <div className='form-group centered'>
-                                <Button className='btn-warning edit-button'>Edit</Button>
-                            </div>
-                        </div>
-                    )}
-                    {message && (
-                        <div className='form-group'>
-                            <div
-                                className={successful ? 'alert alert-success' : 'alert alert-danger'}
-                                role='alert'
-                            >
-                                {message}
-                            </div>
-                        </div>
-                    )}
-                    <CheckButton onClick={() => redirectIfTrue(successful, navigate)} style={{ display: 'none' }} ref={checkBtn} />
-                </Form>
+                        )}
+                        <CheckButton onClick={() => redirectIfTrue(successful, navigate)} style={{ display: 'none' }} ref={checkBtn} />
+                    </Form>
+                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <>
+                <ErrorPage />
+            </>
+        );
+    }
 };
 
 export default UpdateBook;

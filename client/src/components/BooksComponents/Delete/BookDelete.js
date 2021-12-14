@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import {Card} from 'react-bootstrap';
+import AuthService from '../../../services/auth.service';
+import BookService from '../../../services/book.service';
+import { Card } from 'react-bootstrap';
 import Form from 'react-validation/build/form';
 import Button from 'react-validation/build/button';
 import CheckButton from 'react-validation/build/button';
-import BookService from '../../../services/book.service';
+import ErrorPage from '../../ErrorPage';
 import './BookDelete.css';
 
 const DeleteBook = () => {
 
-    
+
     const form = useRef();
     const checkBtn = useRef();
     const navigate = useNavigate('/home');
@@ -20,7 +22,7 @@ const DeleteBook = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState('');
-    const [book, setBook] = useState({ });
+    const [book, setBook] = useState({});
     let params = useParams();
 
     useEffect(() => {
@@ -70,15 +72,22 @@ const DeleteBook = () => {
             );
         };
     };
-    
-    return (
-        <div className='col-md-12 centered'>
-            <div className='card card-container'>
-                <h1>Delete Book</h1>
-                <Form onSubmit={handleDelete} ref={form}>
-                    {!successful && (
-                        <div class="delete-card">
-                            <Card.Img src={imageUrl}></Card.Img>
+    const user = AuthService.getCurrentUser();
+    if (!user) {
+        return (
+            <>
+                <ErrorPage />
+            </>
+        );
+    } else if (user.id === book.userId) {
+        return (
+            <div className='col-md-12 centered'>
+                <div className='card card-container'>
+                    <h1>Delete Book</h1>
+                    <Form onSubmit={handleDelete} ref={form}>
+                        {!successful && (
+                            <div class="delete-card">
+                                <Card.Img src={imageUrl}></Card.Img>
                                 <h6>Book Name:
                                     <h4>{name}</h4>
                                 </h6>
@@ -94,26 +103,33 @@ const DeleteBook = () => {
                                 <h6>Book Genre:
                                     <h5>{genre}</h5>
                                 </h6>
-                            <div className='form-group centered'>
-                                <Button className='btn-danger delete-button'>Delete</Button>
+                                <div className='form-group centered'>
+                                    <Button className='btn-danger delete-button'>Delete</Button>
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    {message && (
-                        <div className='form-group'>
-                            <div
-                                className={successful ? 'alert alert-success' : 'alert alert-danger'}
-                                role='alert'
-                            >
-                                {message}
+                        )}
+                        {message && (
+                            <div className='form-group'>
+                                <div
+                                    className={successful ? 'alert alert-success' : 'alert alert-danger'}
+                                    role='alert'
+                                >
+                                    {message}
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    <CheckButton onClick={() => redirectIfTrue(successful, navigate)} style={{ display: 'none' }} ref={checkBtn} />
-                </Form>
+                        )}
+                        <CheckButton onClick={() => redirectIfTrue(successful, navigate)} style={{ display: 'none' }} ref={checkBtn} />
+                    </Form>
+                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <>
+                <ErrorPage />
+            </>
+        );
+    }
 };
 
 export default DeleteBook;

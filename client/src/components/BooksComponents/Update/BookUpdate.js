@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
+import Textarea from 'react-validation/build/textarea';
 import Select from 'react-validation/build/select';
 import Button from 'react-validation/build/button';
 import CheckButton from 'react-validation/build/button';
@@ -51,7 +52,7 @@ const vbookyear = (value) => {
 
 const UpdateBook = () => {
 
-    
+
     const form = useRef();
     const checkBtn = useRef();
     const navigate = useNavigate('/home');
@@ -59,9 +60,10 @@ const UpdateBook = () => {
     const [author, setAuthor] = useState('');
     const [year, setYear] = useState('');
     const [genre, setGenre] = useState('');
+    const [summary, setSummary] = useState('');
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState('');
-    const [book, setBook] = useState({ });
+    const [book, setBook] = useState({});
     let params = useParams();
 
     useEffect(() => {
@@ -76,6 +78,7 @@ const UpdateBook = () => {
             setAuthor(book.author);
             setYear(book.year);
             setGenre(book.genre);
+            setSummary(book.summary);
         }
     }, [book]);
 
@@ -110,7 +113,7 @@ const UpdateBook = () => {
             );
         };
     };
-    
+
     return (
         <div className='col-md-12 centered'>
             <div className='card card-container'>
@@ -118,6 +121,8 @@ const UpdateBook = () => {
                 <Form onSubmit={handleUpdate} ref={form}>
                     {!successful && (
                         <div>
+
+                            {/*Name*/}
                             <div className='form-group'>
                                 <label>Enter Book Name: <span className='star'>*</span>
                                     <Input
@@ -131,6 +136,7 @@ const UpdateBook = () => {
                                 </label>
                             </div>
 
+                            {/*Author*/}
                             <div className='form-group'>
                                 <label>Enter Book Author: <span className='star'>*</span>
                                     <Input
@@ -144,6 +150,7 @@ const UpdateBook = () => {
                                 </label>
                             </div>
 
+                            {/*Year*/}
                             <div className='form-group'>
                                 <label>Enter Book Year: <span className='star'>*</span>
                                     <Input
@@ -157,6 +164,7 @@ const UpdateBook = () => {
                                 </label>
                             </div>
 
+                            {/*Genre*/}
                             <div className='form-group'>
                                 <label>Enter Book Genre: <span className='star'>*</span>
                                     <Select
@@ -169,6 +177,21 @@ const UpdateBook = () => {
                                     </Select>
                                 </label>
                             </div>
+
+                            {/*Summary*/}
+                            <div className="form-group">
+                                <label>Enter Book Summary:
+                                    <Textarea
+                                        rows="4" cols="33"
+                                        name="summary"
+                                        type="textarea"
+                                        value={summary}
+                                        onChange={(e) => setSummary(e.target.value)}
+                                        placeholder="Book summary..."
+                                    />
+                                </label>
+                            </div>
+
                             <div className='form-group centered'>
                                 <Button className='btn-warning edit-button'>Edit</Button>
                             </div>

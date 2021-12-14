@@ -11,6 +11,7 @@ const Book = mongoose.model(
     genre: String,
     imageUrl:String,
     fileUrl:String,
+    summary:String,
   })
 );
 

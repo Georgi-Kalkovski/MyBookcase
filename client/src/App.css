@@ -91,6 +91,11 @@ input[type="file"] {
   color:#373e44
 }
 
+textarea {
+  cursor:pointer;
+  background-color:#E0C9A6;
+}
+
 select {
   cursor:pointer;
   background-color:#E0C9A6;

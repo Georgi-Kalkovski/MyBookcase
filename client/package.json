@@ -20,6 +20,7 @@
     "react-scripts": "4.0.3",
     "react-search-bar": "^2.2.0",
     "react-validation": "^3.0.7",
+    "reactjs-popup": "^2.0.5",
     "semantic-ui-react": "^2.0.4",
     "spdy-transport": "^3.0.0",
     "validator": "^13.7.0",

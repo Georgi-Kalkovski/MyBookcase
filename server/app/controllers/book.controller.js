@@ -107,6 +107,7 @@ exports.createBoard = async (req, res) => {
       genre: req.body.bookGenre,
       imageUrl: 'https://drive.google.com/uc?export=view&id=' + imageId,
       fileUrl: `https://drive.google.com/file/d/` + fileId + '/preview',
+      summary: req.body.bookSummary
     });
     await book.save();
     return res.status(200).json(book);

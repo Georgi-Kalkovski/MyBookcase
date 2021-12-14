@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import Textarea from "react-validation/build/textarea";
 import Select from "react-validation/build/select";
 import Button from "react-validation/build/button";
 import CheckButton from "react-validation/build/button";
@@ -81,6 +82,7 @@ const CreateBook = (props) => {
     const [author, setAuthor] = useState("");
     const [year, setYear] = useState("");
     const [genre, setGenre] = useState("");
+    const [summary, setSummary] = useState("");
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState('');
 
@@ -123,6 +125,8 @@ const CreateBook = (props) => {
                 <Form onSubmit={handleCreate} ref={form}>
                     {!successful && (
                         <div>
+
+                            {/*Name*/}
                             <div className="form-group">
                                 <label>Enter Book Name: <span className="star">*</span>
                                     <Input
@@ -136,6 +140,7 @@ const CreateBook = (props) => {
                                 </label>
                             </div>
 
+                            {/*Author*/}
                             <div className="form-group">
                                 <label>Enter Book Author: <span className="star">*</span>
                                     <Input
@@ -149,6 +154,7 @@ const CreateBook = (props) => {
                                 </label>
                             </div>
 
+                            {/*Year*/}
                             <div className="form-group">
                                 <label>Enter Book Year: <span className="star">*</span>
                                     <Input
@@ -162,6 +168,7 @@ const CreateBook = (props) => {
                                 </label>
                             </div>
 
+                            {/*Genre*/}
                             <div className="form-group">
                                 <label>Enter Book Genre: <span className="star">*</span>
                                     <Select
@@ -175,6 +182,21 @@ const CreateBook = (props) => {
                                 </label>
                             </div>
 
+                            {/*Summary*/}
+                            <div className="form-group">
+                                <label>Enter Book Summary:
+                                    <Textarea
+                                        rows="4" cols="33"
+                                        name="bookSummary"
+                                        type="textarea"
+                                        value={summary}
+                                        onChange={(e) => setSummary(e.target.value)}
+                                        placeholder="Book summary..."
+                                    />
+                                </label>
+                            </div>
+
+                            {/*Image*/}
                             <div className="form-group">
                                 <label>Enter Book Cover Image: <span className="star">*</span>
                                     <Input
@@ -186,6 +208,7 @@ const CreateBook = (props) => {
                                 </label>
                             </div>
 
+                            {/*File*/}
                             <div className="form-group">
                                 <label>Enter Book File (.pdf): <span className="star">*</span>
                                     <Input
@@ -196,6 +219,7 @@ const CreateBook = (props) => {
                                     />
                                 </label>
                             </div>
+
                             <div className='form-group'>
                                 <Button className='btn btn-block'>Submit</Button>
                             </div>

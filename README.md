@@ -28,6 +28,8 @@ The images and pdf files are uploaded to `Google Drive`. There is a check if the
 
 After the files are uploaded to Google Drive, the entity is uploaded to `MongoDB`.
 
+Trying to access a wrong page, the site takes you to the `Error Page`.
+
 I've made cool looking `Footer` with all my platforms (please like, share and subscribe). There's an Arrow Up function as well and it takes you up to the top.
 
 ## 🖼️ Preview:
@@ -39,6 +41,10 @@ I've made cool looking `Footer` with all my platforms (please like, share and su
 ### All/My/Genre Books Page
 
 ![All](https://i.imgur.com/7riGTqs.png)
+
+### Error Page
+
+![Error404](https://i.imgur.com/eOi0vWG.png)
 
 ### Search option
 

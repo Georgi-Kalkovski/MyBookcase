@@ -1,6 +1,10 @@
 
 
 # 📚 MyBookcase
+
+
+ Try the site ➜ [MyBookcase](https://thebookcase.herokuapp.com/ "Heroku App Service")
+ 
 A place where you can upload your books and share them with your friends.<br/>
 The project allows you to Read books online without the need of downloading them.
 
@@ -31,53 +35,6 @@ After the files are uploaded to Google Drive, the entity is uploaded to `MongoDB
 Trying to access a wrong page, the site takes you to the `Error Page`.
 
 I've made cool looking `Footer` with all my platforms (please like, share and subscribe). There's an Arrow Up function as well and it takes you up to the top.
-
-## 🖼️ Preview:
-
-### Home Page
-
-![Home](https://i.imgur.com/zx6WBrF.png)
-
-### All/My/Genre Books Page
-
-![All](https://i.imgur.com/7riGTqs.png)
-
-### Error Page
-
-![Error404](https://i.imgur.com/eOi0vWG.png)
-
-### Search option
-
-![Search](https://i.imgur.com/ocTmcnQ.png)
-
-### Summary Popup
-
-![Summary](https://i.imgur.com/Ca67OeF.png)
-
-### Book Viewer vs Book Owner
-
-![VvO](https://i.imgur.com/5IM7BbG.png)
-
-### Create Book Page
-
-![Create](https://i.imgur.com/7Am4bbW.png)
-
-### Edit Book Page
-
-![Edit](https://i.imgur.com/gae5mfl.png)
-
-### Delete Book Page
-
-![Delete](https://i.imgur.com/Ne4qLvj.png)
-
-### Footer platforms links
-
-![Platforms](https://i.imgur.com/Wp08RMU.png)
-
-### Unactive/Active(Hovered) ArrowUp function
-
-![UnactiveArrowUp](https://i.imgur.com/dPx2N7n.png)
-![ActiveArrowUp](https://i.imgur.com/CqFqzfv.png)
 
  🔨 Built With
  --
@@ -133,6 +90,53 @@ I've made cool looking `Footer` with all my platforms (please like, share and su
   - [Imgur.com](https://imgur.com/ "Imgur.com")
 - Testing
   - TODO: No tests yet!
+
+## 🖼️ Preview:
+
+### Home Page
+
+![Home](https://i.imgur.com/zx6WBrF.png)
+
+### All/My/Genre Books Page
+
+![All](https://i.imgur.com/7riGTqs.png)
+
+### Error Page
+
+![Error404](https://i.imgur.com/eOi0vWG.png)
+
+### Search option
+
+![Search](https://i.imgur.com/ocTmcnQ.png)
+
+### Summary Popup
+
+![Summary](https://i.imgur.com/Ca67OeF.png)
+
+### Book Viewer vs Book Owner
+
+![VvO](https://i.imgur.com/5IM7BbG.png)
+
+### Create Book Page
+
+![Create](https://i.imgur.com/7Am4bbW.png)
+
+### Edit Book Page
+
+![Edit](https://i.imgur.com/gae5mfl.png)
+
+### Delete Book Page
+
+![Delete](https://i.imgur.com/Ne4qLvj.png)
+
+### Footer platforms links
+
+![Platforms](https://i.imgur.com/Wp08RMU.png)
+
+### Unactive/Active(Hovered) ArrowUp function
+
+![UnactiveArrowUp](https://i.imgur.com/dPx2N7n.png)
+![ActiveArrowUp](https://i.imgur.com/CqFqzfv.png)
 
 <!-- LICENSE -->
 ## License

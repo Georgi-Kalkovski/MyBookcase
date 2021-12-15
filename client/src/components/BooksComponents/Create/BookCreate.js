@@ -230,8 +230,8 @@ const CreateBook = (props) => {
                                     </label>
                                 </div>
 
-                                <div className='form-group'>
-                                <Button className='btn btn-block'>{successful ?'Submit': <><img src={creatingSVG} className='createSvg' alt="save" /><span>Uploading</span></>}</Button>
+                                <div className='form-group SvgDiv'>
+                                    <Button className='btn btn-block SvgBtn'>{successful ?/* 'Submit': */ <img src={creatingSVG} className='createSvg' alt="save" /> : 'Submit'}</Button>
                                 </div>
                             </div>
                         )}

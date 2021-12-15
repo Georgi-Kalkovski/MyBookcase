@@ -108,8 +108,7 @@ select {
 
 #root div:nth-child(1) nav{
   display: flex;
-  justify-content: space-between;
-  padding:0 10%;
+  justify-content: space-around;
   font-size: larger;
 }
 

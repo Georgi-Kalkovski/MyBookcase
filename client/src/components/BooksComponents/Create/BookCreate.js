@@ -11,6 +11,7 @@ import CheckButton from 'react-validation/build/button';
 import BookGenres from '../BookGenres';
 import ErrorPage from '../../ErrorPage';
 import './BookCreate.css';
+import creatingSVG from './creating.svg';
 
 
 const required = (value) => {
@@ -230,7 +231,7 @@ const CreateBook = (props) => {
                                 </div>
 
                                 <div className='form-group'>
-                                    <Button className='btn btn-block'>Submit</Button>
+                                <Button className='btn btn-block'>{successful ?'Submit': <><img src={creatingSVG} className='createSvg' alt="save" /><span>Uploading</span></>}</Button>
                                 </div>
                             </div>
                         )}

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import uuid from 'node-uuid';
+import AuthService from '../../../services/auth.service';
 import BookService from '../../../services/book.service';
 import BookRead from './BookRead';
 
-const BookMyBooks = ({ userId }) => {
+const BookMyBooks = () => {
     const [books, setBooks] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-    console.log(userId);
     useEffect(() => {
         BookService.bookMyBooks()
             .then(res => res.data)
             .then(book => setBooks(book));
     }, []);
+    
+    const user = AuthService.getCurrentUser();
 
     return (
-
         <div style={{ textAlign: 'center' }}>{<h1>My books</h1>}
             <div className='container' style={{ textAlign: 'center', paddingTop: '5vh' }}>
                 <input
@@ -28,7 +29,7 @@ const BookMyBooks = ({ userId }) => {
                 <Row>
                     {books
                         .sort((a, b) => a.name.localeCompare(b.name))
-                        .filter(el => userId ? el.userId === userId.id : true)
+                        .filter(el => user ? el.userId === user.id : true)
                         .filter(el => {
                             if (el.name.includes(searchTerm)) {
                                 return true;

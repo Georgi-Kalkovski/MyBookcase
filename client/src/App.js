@@ -53,11 +53,11 @@ const App = () => {
   return (
     <div>
       <nav className='navbar navbar-expand navbar-dark bg-dark ml-auto'>
-        <Link to={'/'} className='navbar-brand'>
+        <Link to={'/'} className='navbar-brand grow'>
           <spam className="logoName">MyBookcase</spam>
         </Link>
         <div className='navbar-nav mr-auto'>
-          <li className='nav-item'>
+          <li className='nav-item grow'>
             <Link to={'/home'} className='nav-link'>
               Home
             </Link>
@@ -87,7 +87,7 @@ const App = () => {
             </li>
           )*/}
 
-          <li className='nav-item'>
+          <li className='nav-item grow'>
             <Link to={'/book/all'} className='nav-link'>
               All Books
             </Link>
@@ -97,6 +97,7 @@ const App = () => {
             id='nav-dropdown-dark-example'
             title='Genres'
             menuVariant='dark'
+            className='grow dropdown'
           >
             {BookGenres.map(el => <NavDropdown.Item href={`/book/all?genreUrl=${el}`}>{el}</NavDropdown.Item>)}
           </NavDropdown>
@@ -106,13 +107,13 @@ const App = () => {
           <div className='navbar-nav ml-auto'>
 
             {currentUser && (
-              <li className='nav-item'>
+              <li className='nav-item grow'>
                 <Link to={'/book/create'} className='nav-link'>
                   Create Book
                 </Link>
               </li>
             )}
-            <li className='nav-item'>
+            <li className='nav-item grow'>
               <Link to={'/book/mybooks'} className='nav-link'>
                 My Books
               </Link>
@@ -127,7 +128,7 @@ const App = () => {
                 <span className='welcomeUser'>Welcome </span>{currentUser.username} !
               </Link>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item grow'>
               <a href='/login' className='nav-link' onClick={logOut}>
                 Log Out
               </a>
@@ -135,13 +136,13 @@ const App = () => {
           </div>
         ) : (
           <div className='navbar-nav ml-auto'>
-            <li className='nav-item'>
+            <li className='nav-item grow'>
               <Link to={'/login'} className='nav-link'>
                 Login
               </Link>
             </li>
 
-            <li className='nav-item'>
+            <li className='nav-item grow'>
               <Link to={'/register'} className='nav-link'>
                 Sign Up
               </Link>

@@ -11,7 +11,7 @@ const BookRead = ({ book }) => {
     const userId = JSON.parse(localStorage.getItem('user'))?.id;
     return (
 
-        <Card >
+        <Card className='grow'>
             <div>
                 {
                     loaded ? null : (<img className='booksLoader' src={loader} />)

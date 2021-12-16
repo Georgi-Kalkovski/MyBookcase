@@ -36,6 +36,8 @@ Trying to access a wrong page, the site takes you to the `Error Page`.
 
 I've made cool looking `Footer` with all my platforms (please like, share and subscribe). There's an Arrow Up function as well and it takes you up to the top.
 
+The site is also responsive to other screen sizes.
+
  🔨 Built With
  --
  

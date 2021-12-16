@@ -90,8 +90,7 @@ The site is also responsive to other screen sizes.
   - [Error Page 404 by JuliaSS](https://codepen.io/JuliaSS/pen/ZMaXQV "Error Page 404")
   - [Shields.io](https://shields.io/ "Shields.io")
   - [Imgur.com](https://imgur.com/ "Imgur.com")
-- Testing
-  - TODO: No tests yet!
+  - [Books from chitanka.info](https://chitanka.info/ "Books from chitanka.info")
 
 ## 🖼️ Preview:
 

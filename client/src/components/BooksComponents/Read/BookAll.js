@@ -31,9 +31,9 @@ const BookAll = ({ name, genre }) => {
                     {books
                         .sort((a, b) => a.name.localeCompare(b.name))
                         .filter(el => {
-                            if (el.name.includes(searchTerm)) {
+                            if (el.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                                 return true;
-                            } else if (el.author.includes(searchTerm)) {
+                            } else if (el.author.toLowerCase().includes(searchTerm.toLowerCase())) {
                                 return true;
                             } else if (el.year.toString().includes(searchTerm)) {
                                 return true;

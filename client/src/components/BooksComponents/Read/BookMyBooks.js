@@ -19,7 +19,7 @@ const BookMyBooks = () => {
 
     return (
         <div style={{ textAlign: 'center' }}>{<h1>My books</h1>}
-            <div className='container' style={{ textAlign: 'center', paddingTop: '5vh' }}>
+            <div className='container mediaCard' style={{ textAlign: 'center', paddingTop: '5vh' }}>
                 <input
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}

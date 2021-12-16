@@ -82,7 +82,7 @@ const DeleteBook = () => {
     } else if (user.id === book.userId) {
         return (
             <div className='col-md-12 centered'>
-                <div className='card card-container'>
+                <div className='card card-container mediaCard'>
                     <h1>Delete Book</h1>
                     <Form onSubmit={handleDelete} ref={form}>
                         {!successful && (

@@ -9,24 +9,24 @@ import discord from './img/discord.svg';
 const Footer = () => {
     const [isVisible, setIsVisible] = useState(true);
 
-    useEffect(() => {   
+    useEffect(() => {
         window.addEventListener("scroll", listenToScroll);
-        return () => 
-           window.removeEventListener("scroll", listenToScroll); 
-      }, []);
-      
-      const listenToScroll = () => {
+        return () =>
+            window.removeEventListener("scroll", listenToScroll);
+    }, []);
+
+    const listenToScroll = () => {
         let heightToHideFrom = 10;
-        const winScroll = document.body.scrollTop || 
+        const winScroll = document.body.scrollTop ||
             document.documentElement.scrollTop;
-           
-        if (winScroll < heightToHideFrom) { 
-           isVisible &&        
-             setIsVisible(false);
+
+        if (winScroll < heightToHideFrom) {
+            isVisible &&
+                setIsVisible(false);
         } else {
-             setIsVisible(true);
-        }  
-      };
+            setIsVisible(true);
+        }
+    };
 
     return (
         <div className='footer'>

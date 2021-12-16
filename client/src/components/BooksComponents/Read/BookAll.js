@@ -16,7 +16,7 @@ const BookAll = ({ name, genre }) => {
     }, []);
 
     return (
-        <div className='container'>
+        <div className='container mediaCard'>
             <div style={{ textAlign: 'center' }}>{!genre ? <h1>All books</h1> : <h1>{genre}</h1>}</div>
 
 

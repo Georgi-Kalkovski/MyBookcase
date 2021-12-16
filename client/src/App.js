@@ -52,7 +52,7 @@ const App = () => {
 
   return (
     <div>
-      <nav className='navbar navbar-expand navbar-dark bg-dark ml-auto'>
+      <nav className='navbar navbar-expand navbar-dark bg-dark ml-auto upper-navbar'>
         <Link to={'/'} className='navbar-brand grow'>
           <spam className="logoName">TheBookcase</spam>
         </Link>
@@ -124,7 +124,7 @@ const App = () => {
               </Link>
             </li>*/}
             <li className='nav-item'>
-              <Link to={'*'} className='nav-link'>
+              <Link to={'*'} className='nav-link welcome'>
                 <span className='welcomeUser'>Welcome </span>{currentUser.username} !
               </Link>
             </li>

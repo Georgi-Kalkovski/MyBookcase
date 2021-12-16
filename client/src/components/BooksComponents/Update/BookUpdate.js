@@ -126,7 +126,7 @@ const UpdateBook = () => {
     } else if (user.id === book.userId) {
         return (
             <div className='col-md-12 centered'>
-                <div className='card card-container'>
+                <div className='card card-container mediaCard'>
                     <h1>Edit Book</h1>
                     <Form onSubmit={handleUpdate} ref={form}>
                         {!successful && (

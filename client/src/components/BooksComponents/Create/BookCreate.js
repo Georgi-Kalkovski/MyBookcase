@@ -135,8 +135,8 @@ const CreateBook = (props) => {
         );
     } else {
         return (
-            <div className='col-md-12 centered'>
-                <div className='card card-container'>
+            <div className='col-md-12 centered '>
+                <div className='card card-container mediaCard'>
                     <h1>Create Book</h1>
                     <Form onSubmit={handleCreate} ref={form}>
                         {!successful && (

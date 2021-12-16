@@ -18,7 +18,7 @@
         justify-content: space-around;
     }
     .card {
-        max-width:50%;
+        max-width:40%;
         max-height: 100vh;
     }
     .search-bar {
@@ -33,16 +33,6 @@
     }
 }
 
-@media (max-width: 480px) {
-    .row {
-        justify-content: space-around;
-    }
-    .card {
-        max-width:90%;
-        max-height: 100vh;
-    }
-}
-
 @media (max-height: 900px) {
     .row {
         margin-bottom: 100px;
@@ -54,6 +44,16 @@
 
     .mediaCard h1 {
         margin-top:-40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .row {
+        justify-content: space-around;
+    }
+    .card {
+        max-width:90%;
+        max-height: 100vh;
     }
 }
 

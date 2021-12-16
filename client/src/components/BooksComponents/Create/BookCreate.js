@@ -122,8 +122,6 @@ const CreateBook = (props) => {
                     setSuccessful(false);
                 }
             );
-
-
         };
     };
     const user = AuthService.getCurrentUser();

@@ -91,7 +91,6 @@ const CreateBook = (props) => {
 
     const handleCreate = (e) => {
         e.preventDefault();
-
         setMessage('');
         setSuccessful(false);
 
@@ -100,6 +99,8 @@ const CreateBook = (props) => {
         formData.append('userId', userId);
 
         if (checkBtn.current.context._errors.length === 0) {
+            e.target.querySelector('div.form-group.SvgDiv > button').style.display = 'none';
+            e.target.querySelector('div.form-group.SvgDiv > img').style.display = 'block';
             BookService.bookCreate(formData).then(
                 (response) => {
                     setMessage(response.data.message);
@@ -107,6 +108,9 @@ const CreateBook = (props) => {
                     navigate('/');
                 },
                 (error) => {
+
+                    e.target.querySelector('div.form-group.SvgDiv > button').style.display = 'block';
+                    e.target.querySelector('div.form-group.SvgDiv > img').style.display = 'none';
                     const resMessage =
                         (error.response &&
                             error.response.data &&
@@ -118,6 +122,8 @@ const CreateBook = (props) => {
                     setSuccessful(false);
                 }
             );
+
+
         };
     };
     const user = AuthService.getCurrentUser();
@@ -230,8 +236,10 @@ const CreateBook = (props) => {
                                     </label>
                                 </div>
 
-                                <div className='form-group SvgDiv'>
-                                    <Button className='btn btn-block SvgBtn'>{successful ?/* 'Submit': */ <img src={creatingSVG} className='createSvg' alt="save" /> : 'Submit'}</Button>
+                                <div className='form-group SvgDiv centered'>
+                                    <img src={creatingSVG} className='createSvg' style={{ display: 'none' }} alt="save" />
+                                    <Button className='btn btn-block SvgBtn'>Submit</Button>
+
                                 </div>
                             </div>
                         )}
@@ -258,7 +266,15 @@ export default CreateBook;
 
 
 function redirectIfTrue(successful, navigate) {
-    if (successful === true) {
+    if (successful === false) {
         return navigate;
+    }
+}
+
+function changeButton(successful, changing) {
+    console.log(successful);
+    console.log(changing);
+    if (successful === true) {
+        return changing;
     }
 }

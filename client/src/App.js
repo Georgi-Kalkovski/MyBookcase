@@ -54,7 +54,7 @@ const App = () => {
     <div>
       <nav className='navbar navbar-expand navbar-dark bg-dark ml-auto'>
         <Link to={'/'} className='navbar-brand grow'>
-          <spam className="logoName">MyBookcase</spam>
+          <spam className="logoName">TheBookcase</spam>
         </Link>
         <div className='navbar-nav mr-auto'>
           <li className='nav-item grow'>

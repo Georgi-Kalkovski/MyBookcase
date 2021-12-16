@@ -3,7 +3,7 @@
 # 📚 MyBookcase
 
 
- Try the site ➜ [MyBookcase](https://thebookcase.herokuapp.com/ "Heroku App Service")
+ Try the site ➜ [TheBookcase](https://thebookcase.herokuapp.com/ "Heroku App Service")
  
 A place where you can upload your books and share them with your friends.<br/>
 The project allows you to Read books online without the need of downloading them.

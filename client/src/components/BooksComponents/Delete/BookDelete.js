@@ -104,6 +104,7 @@ const DeleteBook = () => {
                                     <h5>{genre}</h5>
                                 </h6>
                                 <div className='form-group centered'>
+                                    <button type="button" onClick={() => navigate(-1)} className='btn edit-button'>Back</button>
                                     <Button className='btn-danger delete-button'>Delete</Button>
                                 </div>
                             </div>

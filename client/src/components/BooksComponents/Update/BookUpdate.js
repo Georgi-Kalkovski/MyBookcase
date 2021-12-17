@@ -57,7 +57,7 @@ const UpdateBook = () => {
 
     const form = useRef();
     const checkBtn = useRef();
-    const navigate = useNavigate('/home');
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [author, setAuthor] = useState('');
     const [year, setYear] = useState('');
@@ -199,6 +199,7 @@ const UpdateBook = () => {
                                 </div>
 
                                 <div className='form-group centered'>
+                                    <button type="button" onClick={() => navigate(-1)} className='btn edit-button'>Back</button>
                                     <Button className='btn-warning edit-button'>Edit</Button>
                                 </div>
                             </div>

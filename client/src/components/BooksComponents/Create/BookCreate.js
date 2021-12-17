@@ -105,7 +105,7 @@ const CreateBook = (props) => {
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
-                    navigate('/');
+                    navigate('/book/mybooks');
                 },
                 (error) => {
 

@@ -10,7 +10,7 @@ The project allows you to Read books online without the need of downloading them
 
 Accessing books can be done by the pages `Home`, `All Books`, choosing a genre from the `Genres` dropdown menu, and if you register you'll be able to access your created books from the `My Books` page.
 
-The project have `Register`/`Login` functionality.<br/>
+The project has `Register`/`Login` functionality.<br/>
 
 Unregistered Visitors can access the pages: `Home`, `All Books`, `Genres`, `Read`.
 
@@ -22,17 +22,17 @@ You can also access a `Search` functionality via the pages `All Books`, `Genres`
 
 `Home` page gives you four random books for flavor.
 
-`All Books`, `Genres` and `My Books` work almost the same. the differences are in the names... If you are the creator of a book, you will see the `Edit` and `Delete` buttons on the card. Both Visitors and Users can see the `Summary` button which activates a summary popup.
+`All Books`, `Genres` and `My Books` work almost the same. the differences are self-explanatory... If you are the creator of a book, you will see the `Edit` and `Delete` buttons on the card. Both Visitors and Users can see the `Summary` button which activates a summary pop-up.
 
-Using the `Create Book` page, when registered, takes you to a form where you can submit only when filling it with the right information. There is a verification. The book name and the author are string between 2 characters and 200 for the book, 100 for the author. The year is number between 1 and current year. The genre is a select options with 'Unknown' as a default. The cover image must be in format .jpg/.jpeg or .png only. The file must be .pdf format only.<br/>
+Once registered, using the `Create Book` page takes you to a form where you can submit only after filling it in with the right information. There is a verification. The book name and the author are strings between 2 and 200  characters for the book and 100 for the author. The year is a number between 1 and the current year. The genre is select with options, and 'Unknown' is set as default. The cover image must be in format .jpg, .jpeg or .png. The file must be .pdf format only.<br/>
 `Edit` page works as expected. It validates the data. Only the name, author, year and the genre can be changed, so be careful about those files you are uploading...<br/>
 `Delete`... it deletes.
 
-The images and pdf files are uploaded to `Google Drive`. There is a check if there is already a file with the same name inside the Google Drive folder where the magic is happening.
+The images and pdf files are uploaded to `Google Drive`. There is a check to verify there isn't a file with the same name inside the Google Drive folder where the magic is happening.
 
 After the files are uploaded to Google Drive, the entity is uploaded to `MongoDB`.
 
-Trying to access a wrong page, the site takes you to the `Error Page`.
+The site takes you to the `Error Page` if you try to access a non-existent url.
 
 I've made cool looking `Footer` with all my platforms (please like, share and subscribe). There's an Arrow Up function as well and it takes you up to the top.
 
@@ -98,7 +98,7 @@ The site is also responsive to other screen sizes.
 
 ![Home](https://i.imgur.com/zx6WBrF.png)
 
-### All/My/Genre Books Page
+### All Books, My Books, Genres Pages
 
 ![All](https://i.imgur.com/7riGTqs.png)
 

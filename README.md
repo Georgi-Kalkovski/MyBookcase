@@ -124,11 +124,11 @@ The site is also responsive to other screen sizes.
 
 ### Edit Book Page
 
-![Edit](https://i.imgur.com/gae5mfl.png)
+![Edit](https://i.imgur.com/q9rXW36.png)
 
 ### Delete Book Page
 
-![Delete](https://i.imgur.com/Ne4qLvj.png)
+![Delete](https://i.imgur.com/wxsPAOC.png)
 
 ### Footer platforms links
 

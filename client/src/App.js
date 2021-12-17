@@ -94,12 +94,12 @@ const App = () => {
           </li>
 
           <NavDropdown
-            id='nav-dropdown-dark-example'
+            id='nav-dropdown'
             title='Genres'
             menuVariant='dark'
             className='grow dropdown'
           >
-            {BookGenres.map(el => <NavDropdown.Item href={`/book/all?genreUrl=${el}`}>{el}</NavDropdown.Item>)}
+            {BookGenres.map(el => <Link to={`/book/all?genreUrl=${el}`}>{el}</Link>)}
           </NavDropdown>
         </div>
 

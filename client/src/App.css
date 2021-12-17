@@ -134,7 +134,21 @@ select {
   transform: scale(1.1); 
 }
 
+.dropdown{
+  z-index: 3;
+}
 
-.dropdown {
-z-index: 3;
+.dropdown div{
+  background-color: #212529;
+  border:3px solid #AD9B80;
+  width:200px;
+  font-size: small;
+  padding: 5px;
+}
+.dropdown div a{
+  z-index: 3;
+  display:flex;
+  flex-direction: column;
+  padding: 5px 0;
+  border-bottom:1px solid #AD9B80;
 }

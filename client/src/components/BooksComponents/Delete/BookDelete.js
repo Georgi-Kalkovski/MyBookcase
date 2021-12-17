@@ -8,6 +8,7 @@ import Button from 'react-validation/build/button';
 import CheckButton from 'react-validation/build/button';
 import ErrorPage from '../../ErrorPage';
 import './BookDelete.css';
+import dotsSvg from '../../../dots.svg';
 
 const DeleteBook = () => {
 
@@ -46,19 +47,27 @@ const DeleteBook = () => {
 
         setMessage('');
         setSuccessful(false);
-        navigate(-1);
 
         const userId = JSON.parse(localStorage.getItem('user'))?.id;
         const formData = new FormData(e.target);
         formData.append('userId', userId);
 
         if (checkBtn.current.context._errors.length === 0) {
+            e.target.querySelector('div.form-group.SvgDiv > button.btn.edit-button').style.display = 'none';
+            e.target.querySelector('div.form-group.SvgDiv > button.btn-danger.delete-button').style.display = 'none';
+            e.target.querySelector('div.form-group.SvgDiv > img').style.display = 'block';
+
             BookService.bookDelete(params.id, formData).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
+                    setTimeout(() => { navigate('/book/mybooks'); }, 1000);
                 },
                 (error) => {
+
+                    e.target.querySelector('div.form-group.SvgDiv > button.btn.edit-button').style.display = 'none';
+                    e.target.querySelector('div.form-group.SvgDiv > button.btn-danger.delete-button').style.display = 'none';
+                    e.target.querySelector('div.form-group.SvgDiv > img').style.display = 'block';
                     const resMessage =
                         (error.response &&
                             error.response.data &&
@@ -85,7 +94,6 @@ const DeleteBook = () => {
                 <div className='card card-container mediaCard'>
                     <h1>Delete Book</h1>
                     <Form onSubmit={handleDelete} ref={form}>
-                        {!successful && (
                             <div class='delete-card'>
                                 <Card.Img src={imageUrl}></Card.Img>
                                 <h6>Book Name:
@@ -103,12 +111,12 @@ const DeleteBook = () => {
                                 <h6>Book Genre:
                                     <h5>{genre}</h5>
                                 </h6>
-                                <div className='form-group centered'>
+                                <div className='form-group SvgDiv centered'>
+                                    <img src={dotsSvg} className='createSvg' style={{ display: 'none' }} alt="save" />
                                     <button type="button" onClick={() => navigate(-1)} className='btn edit-button'>Back</button>
                                     <Button className='btn-danger delete-button'>Delete</Button>
                                 </div>
                             </div>
-                        )}
                         {message && (
                             <div className='form-group'>
                                 <div

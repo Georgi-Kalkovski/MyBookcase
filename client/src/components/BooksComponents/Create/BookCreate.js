@@ -11,7 +11,7 @@ import CheckButton from 'react-validation/build/button';
 import BookGenres from '../BookGenres';
 import ErrorPage from '../../ErrorPage';
 import './BookCreate.css';
-import creatingSVG from './creating.svg';
+import dotsSvg from '../../../dots.svg';
 
 
 const required = (value) => {
@@ -235,7 +235,7 @@ const CreateBook = (props) => {
                                 </div>
 
                                 <div className='form-group SvgDiv centered'>
-                                    <img src={creatingSVG} className='createSvg' style={{ display: 'none' }} alt="save" />
+                                    <img src={dotsSvg} className='createSvg' style={{ display: 'none' }} alt="save" />
                                     <Button className='btn btn-block SvgBtn'>Submit</Button>
 
                                 </div>
@@ -266,13 +266,5 @@ export default CreateBook;
 function redirectIfTrue(successful, navigate) {
     if (successful === false) {
         return navigate;
-    }
-}
-
-function changeButton(successful, changing) {
-    console.log(successful);
-    console.log(changing);
-    if (successful === true) {
-        return changing;
     }
 }

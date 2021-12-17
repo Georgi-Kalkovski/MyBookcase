@@ -58,7 +58,7 @@ The site is also responsive to other screen sizes.
   - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript "JavaScript")
 - Markup Languages:
   - [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML "HTML5")
-  - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS3")|
+  - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS3")
 - NPM packages (front-end):
   - [react](https://www.npmjs.com/package/react "react")
   - [react-router-dom](https://www.npmjs.com/package/react-bootstrap "react-router-dom")

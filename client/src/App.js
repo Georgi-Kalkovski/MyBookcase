@@ -12,7 +12,6 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
 import ErrorPage from './components/ErrorPage';
-import Visitors from './components/Visitors';
 
 import BoardUser from './components/Boards/BoardUser';
 import BoardModerator from './components/Boards/BoardModerator';
@@ -169,7 +168,6 @@ const App = () => {
           <Route exact path='/book/read' element={<BookPdfViewer />} />
           <Route exact path='/book/edit/:id' element={<BookUpdate />} />
           <Route exact path='/book/delete/:id' element={<BookDelete />} />
-          <Route exact path='/visitors' element={<Visitors />} />
           
         </Routes>
       </div>

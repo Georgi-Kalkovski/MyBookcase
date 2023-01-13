@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 var corsOptions = {
-  origin: ["http://localhost:3000","https://thebookcase.herokuapp.com", "http://thebookcase.herokuapp.com"]
+  origin: ["http://localhost:3000","https://thebookcase.onrender.com", "http://thebookcase.onrender.com"]
 };
 
 app.use(cors(corsOptions));

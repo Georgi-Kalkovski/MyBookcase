@@ -3,7 +3,7 @@
 # 📚 MyBookcase
 
 
- Try the site ➜ [TheBookcase](https://thebookcase.herokuapp.com/ "Heroku App Service")
+ Try the site ➜ [TheBookcase](https://thebookcase.onrender.com/ "Render App Service")
  
 A place where you can upload your books and share them with your friends.<br/>
 The project allows you to Read books online without the need of downloading them.
@@ -48,9 +48,9 @@ The site is also responsive to other screen sizes.
 - Database:
   - [MongoDB](https://www.mongodb.com/ "MongoDB")
 - Web Servers:
-  - [Heroku](https://id.heroku.com/ "Heroku")
-  - [Heroku App Service](https://thebookcase.herokuapp.com/ "Heroku App Service")
-  - [Heroku Api Database](https://thebookcase-api.herokuapp.com/ "Heroku Api Database")
+  - [Render](https://render.com/ "Render")
+  - [Render App Service](https://thebookcase.onrender.com/ "Render App Service")
+  - [Render Api Database](https://thebookcase-api.onrender.com/ "Render Api Database")
 - Back-End:
   - [Node.js](https://nodejs.org/en/ "Node.js")
 - Front-End:

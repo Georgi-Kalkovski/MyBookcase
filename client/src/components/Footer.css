@@ -38,7 +38,8 @@ footer {
 
 .contactMe img {
     filter: invert(58%) sepia(7%) saturate(1026%) hue-rotate(355deg) brightness(86%) contrast(85%);
-	width: 30px
+	width: 30px;
+	margin-left: 10px;
 }
 
 .contactMe img:hover {

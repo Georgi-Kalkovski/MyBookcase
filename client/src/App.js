@@ -153,7 +153,6 @@ const App = () => {
 
       <div className='container mt-3'>
         <Routes>
-          <Route path='*' element={<ErrorPage />} />
           <Route exact path='/' element={<Home />} />
           <Route exact path='/home' element={<Home />} />
           <Route exact path='/login' element={<Login />} />
@@ -168,7 +167,7 @@ const App = () => {
           <Route exact path='/book/read' element={<BookPdfViewer />} />
           <Route exact path='/book/edit/:id' element={<BookUpdate />} />
           <Route exact path='/book/delete/:id' element={<BookDelete />} />
-          
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </div>
 
